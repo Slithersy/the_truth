@@ -1,0 +1,88 @@
+<HPLMapTrack_Area ID="C55C89D97676C1D84FF55FA1346830C1AE7B3F" Version="1.00">
+    <Section Name="Potato@POTATO">
+        <Objects>
+            <Area ID="268470423" Name="WindowCrackEffectArea" CreStamp="1430848136" ModStamp="1605721179" WorldPos="-14.75 -4 17.375" Rotation="0 4.71239 0" Scale="0.25 0.75 0.75" Active="true" Mesh="" UID="16 11069 268470423" AreaType="Trigger">
+                <UserVariables>
+                    <Var Name="BlocksLineOfSight" Value="false" />
+                    <Var Name="EventInstanceTag" Value="" />
+                    <Var Name="UserVar" Value="" />
+                    <Var Name="CC_Entities" Value="" />
+                    <Var Name="CC_Funcs" Value="" />
+                    <Var Name="ParentAttachEntity" Value="" />
+                    <Var Name="ParentAttachUseRotation" Value="true" />
+                    <Var Name="ParentAttachBody" Value="" />
+                    <Var Name="ParentAttachLocked" Value="false" />
+                    <Var Name="PlayerLookAtCallback" Value="" />
+                    <Var Name="PlayerLookAtCallbackAutoRemove" Value="true" />
+                    <Var Name="PlayerLookAtCheckCenterOfScreen" Value="true" />
+                    <Var Name="PlayerLookAtCheckRayIntersection" Value="true" />
+                    <Var Name="PlayerLookAtMaxDistance" Value="-1" />
+                    <Var Name="PlayerLookAtCallbackDelay" Value="0" />
+                    <Var Name="PlayerInteractCallback" Value="" />
+                    <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
+                    <Var Name="CanInteractWithoutCallback" Value="false" />
+                    <Var Name="MaxFocusDistance" Value="-1" />
+                    <Var Name="CustomInteractIcon" Value="PushButton" />
+                </UserVariables>
+            </Area>
+            <Area ID="268470505" Name="Level2_Room2_SoundScapeMain_1" CreStamp="1591557672" ModStamp="1605721178" WorldPos="-16.625 -2 9.4375" Rotation="0 0 0" Scale="16.375 4.5 17.375" Active="true" Mesh="" UID="16 10805 268470505" AreaType="Soundscape">
+                <UserVariables>
+                    <Var Name="UseReverb" Value="true" />
+                    <Var Name="ReverbType" Value="Generic" />
+                    <Var Name="ReverbPrio" Value="0" />
+                    <Var Name="ReverbAmount" Value="1" />
+                    <Var Name="ReverbFadeTime" Value="1" />
+                    <Var Name="Prio" Value="0" />
+                    <Var Name="Level" Value="2: Room" />
+                    <Var Name="BG_Sound" Value="02_05_theta/amb/background/residential_meeting_area" />
+                    <Var Name="BG_Volume" Value="0.2" />
+                    <Var Name="BG_FadeInTime" Value="1" />
+                    <Var Name="BG_FadeOutTime" Value="1" />
+                    <Var Name="BG_FadeTransitionSpeed" Value="1" />
+                    <Var Name="BG_ParentVolMul" Value="1" />
+                    <Var Name="SoundEnt_InNames" Value="" />
+                    <Var Name="SoundEnt_OutNames" Value="" />
+                    <Var Name="SoundEnt_FadeInTime" Value="1" />
+                    <Var Name="SoundEnt_FadeOutTime" Value="1" />
+                    <Var Name="SoundPrefixPrio" Value="0" />
+                    <Var Name="SoundPrefix" Value="medium_room" />
+                    <Var Name="ParentAttachEntity" Value="" />
+                    <Var Name="ParentAttachUseRotation" Value="true" />
+                    <Var Name="ParentAttachBody" Value="" />
+                </UserVariables>
+            </Area>
+            <Area ID="268472163" Name="Level2_Visibility_1" CreStamp="1605304939" ModStamp="1605721179" WorldPos="-32.75 -1 14.5" Rotation="0 0 0" Scale="49 16.25 48.75" Active="true" Mesh="" UID="16 9539 268472163" AreaType="VisibilityArea">
+                <UserVariables>
+                    <Var Name="AddPartialIntersectingObjects" Value="false" />
+                    <Var Name="MinObjectsPerNode" Value="-1" />
+                    <Var Name="MaxObjectsPerNode" Value="-1" />
+                </UserVariables>
+            </Area>
+            <Area ID="268472600" Name="VisibilityPortalArea_3" CreStamp="1605305734" ModStamp="1605721178" WorldPos="-8.25 -2.5 7.5" Rotation="0 1.5708 0" Scale="2 3 0.25" Active="true" Mesh="" UID="16 10165 268472600" AreaType="VisibilityPortal">
+                <UserVariables>
+                    <Var Name="ConnectedAreas1" Value="Level2_Visibility_1" />
+                    <Var Name="ConnectedAreas2" Value="Level2_Visibility" />
+                    <Var Name="ConnectedAreas3" Value="VisibilityAreaArea_1" />
+                </UserVariables>
+            </Area>
+            <Area ID="268475617" Name="MenuCamera_1" CreStamp="1605721900" ModStamp="1605723048" WorldPos="-25.6891 -2.14729 2.79731" Rotation="0 1.147 0" Scale="0.471571 0.409693 0.809453" Active="true" Mesh="" UID="16 11481 268475617" AreaType="CameraAnimation">
+                <UserVariables>
+                    <Var Name="MaxYaw" Value="45" />
+                    <Var Name="MaxPitch" Value="45" />
+                    <Var Name="LookSpeedMultiplier" Value="1" />
+                    <Var Name="ForwardTime" Value="1" />
+                    <Var Name="BackwardTime" Value="1" />
+                    <Var Name="AutoMovement" Value="0" />
+                    <Var Name="LookMoveDistance" Value="0" />
+                    <Var Name="LookMoveMaxAngle" Value="0" />
+                    <Var Name="InteractiveMovement" Value="true" />
+                    <Var Name="UseSpeedFading" Value="true" />
+                    <Var Name="CrouchOnExit" Value="false" />
+                    <Var Name="InitToCamera" Value="false" />
+                    <Var Name="UsePlayerEyeline" Value="false" />
+                    <Var Name="CallbackFunc" Value="" />
+                </UserVariables>
+            </Area>
+        </Objects>
+    </Section>
+</HPLMapTrack_Area>

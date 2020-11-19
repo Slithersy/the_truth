@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<VoiceData>
+ <Characters>
+  <Character ID="0" Name="Simon" DisplayName="Simon" Actor="" AutoGenVoice="False" AutoGenVoiceFile="" AutoGenVoiceSoundFreq="1" WorldSpace="False" AffectedByReverb="False" TextToSpeechVoice="Default" DefaultCriteria="" EntryType="GUIWorld" Volume="0" ReverbVolume="1" SpeakerSpread="40" EntitySource="" MinDist="0" MaxDist="0" MinFreq="22000" MaxFreq="22000" MaxListeningDist="-1" FrequencyFilter="None" />
+  <Character ID="1" Name="Ashley" DisplayName="Ashley" Actor="" AutoGenVoice="False" AutoGenVoiceFile="" AutoGenVoiceSoundFreq="1" WorldSpace="False" AffectedByReverb="False" TextToSpeechVoice="Default" DefaultCriteria="" EntryType="GUIWorld" Volume="0" ReverbVolume="0.96" SpeakerSpread="40" EntitySource="" MinDist="0" MaxDist="0" MinFreq="22000" MaxFreq="22000" MaxListeningDist="-1" FrequencyFilter="None" />
+ </Characters>
+ <Effects />
+ <Scenes>
+  <Scene ID="0" Name="intro" FocusPrio="0" DefaultCriteria="" Volume="1" ReverbVolume="1" />
+ </Scenes>
+ <Subjects>
+  <Subject Name="Intro_Munshi" UseSingleRandomLine="False" SceneId="0" EffectId="-1">
+   <Line CharacterId="0" Prio="0">
+    <Sound Text="Catherine?" EndPadding="-0.62" FileName="cathandsimon_5c_cath_simonisleftalone_001_player_001" Timestamp="2020-05-26 07:37" />
+   </Line>
+   <Line CharacterId="0" Prio="0">
+    <Sound Text="Please don't leave me alone." EndPadding="-0.3" FileName="cathandsimon_5c_cath_simonisleftalone_002_player_001" Timestamp="2020-05-26 07:37" />
+   </Line>
+   <Line CharacterId="0" Prio="0">
+    <Sound Text="Catherine?  Catherine?" Timestamp="2020-05-26 07:37" />
+   </Line>
+  </Subject>
+ </Subjects>
+</VoiceData>

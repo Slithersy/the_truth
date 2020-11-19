@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Content 
+	Version="1.0"
+	Type="StandAlone"
+	Title="The Truth"
+	Author="Slithersy (SugarTheCat)"
+	Description="[SPOILERS] - There is an into in the beginning that has huge spoilers, please finish the game before playing this mod.
+	
+	It was all a lie, all of it. Catherine, Akers, and most importantly - Robot Girl.
+	You are playing as Simon Jarrett who has started to lose Tracer Fluid in the blood.
+	Is reality breaking apart or is it just your imagination? Discover the truth."
+	
+	UID=""
+	Dependencies=""
+
+	ResourcesCfg="resources.cfg"
+	LanguageFolder="lang"
+
+	LauncherPic="the_truth.png" 
+	InitCfg="config/main_init.cfg" 
+/>

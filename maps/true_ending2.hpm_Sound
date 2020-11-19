@@ -1,0 +1,12 @@
+<HPLMapTrack_Sound ID="4C512D651E745718DF4D9A528753E7E1F2BAD9" Version="1.00">
+    <Section Name="Potato@POTATO">
+        <Objects>
+            <Sound ID="268436420" Name="Hum_Servers1" CreStamp="1590177864" ModStamp="1590178101" WorldPos="-3.625 0.75 -6" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="level_amb_shared_machines/tech/server/hum" MinDistance="1.5" MaxDistance="3" Volume="0.5" Active="true" UseCustomProperties="true" UID="16 502 268436420" />
+            <Sound ID="268436787" Name="Hum_Servers1_1" CreStamp="1590256596" ModStamp="1590359644" WorldPos="-2.25 1.625 -9" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="level_amb_shared_machines/tech/server/hum" MinDistance="1" MaxDistance="2.5" Volume="0.3" Active="true" UseCustomProperties="true" UID="16 654 268436787" />
+            <Sound ID="268436789" Name="Hum_Servers1_2" CreStamp="1590256949" ModStamp="1590359646" WorldPos="-6.25 1.625 -9" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="level_amb_shared_machines/tech/server/hum" MinDistance="1" MaxDistance="2.5" Volume="0.3" Active="true" UseCustomProperties="true" UID="16 669 268436789" />
+            <Sound ID="268436978" Name="Ambient_LightSound2_11" CreStamp="1590266913" ModStamp="1590266959" WorldPos="4.625 2.8125 -21.375" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="level_amb_shared_machines/misc/lights/bright_light_buzz" MinDistance="1" MaxDistance="2.5" Volume="1" Active="true" UseCustomProperties="true" UID="16 558 268436978" />
+            <Sound ID="268436983" Name="Ambient_LightSound2_12" CreStamp="1590266965" ModStamp="1590266971" WorldPos="-1 2.8125 -21.375" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="level_amb_shared_machines/misc/lights/bright_light_buzz" MinDistance="1" MaxDistance="2.5" Volume="1" Active="true" UseCustomProperties="true" UID="16 559 268436983" />
+            <Sound ID="268437604" Name="carl_lever_fan" CreStamp="1431358620" ModStamp="1590414156" WorldPos="-25.25 0.5 -6.75" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="Entities_Station/object/flow_control_lever/fan" MinDistance="3" MaxDistance="9" Volume="1" Active="true" UseCustomProperties="false" UID="16 457 268437604" />
+        </Objects>
+    </Section>
+</HPLMapTrack_Sound>

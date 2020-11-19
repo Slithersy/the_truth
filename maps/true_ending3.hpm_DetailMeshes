@@ -1,0 +1,32 @@
+<HPLMapTrack_DetailMeshes ID="79862EC950BA19CE2754E5172B791515F2A75DD3" Version="1.00">
+    <DetailMeshes MaxRange="4000">
+        <Sections>
+            <Section Name="Potato@POTATO">
+                <DetailMesh File="detail_meshes/robot/tentacles/tentacle02.dae" NumOfInstances="2">
+                    <DetailMeshEntityIDs>268474847 268474934</DetailMeshEntityIDs>
+                    <DetailMeshEntityPositions>158.077 3.10828 117.382 158.661 1.68077 117.382</DetailMeshEntityPositions>
+                    <DetailMeshEntityRotations>0.071559 -0.373962 -0.206055 -0.901428 0.603923 0.258118 0.650665 0.381165</DetailMeshEntityRotations>
+                    <DetailMeshEntityRadii>2.595339 2.595339</DetailMeshEntityRadii>
+                    <DetailMeshEntityColors>1 1 1 1 1 1</DetailMeshEntityColors>
+                    <DetailMeshEntityModStamps>1605704519 1605704519</DetailMeshEntityModStamps>
+                </DetailMesh>
+                <DetailMesh File="detail_meshes/robot/tentacles/tentacle04.dae" NumOfInstances="2">
+                    <DetailMeshEntityIDs>268474862 268475410</DetailMeshEntityIDs>
+                    <DetailMeshEntityPositions>159.754 3.55718 118.003 167.429 2.6176 115.683</DetailMeshEntityPositions>
+                    <DetailMeshEntityRotations>0.279206 0.127899 -0.602692 -0.736511 0.062775 -0.075806 -0.277649 0.955627</DetailMeshEntityRotations>
+                    <DetailMeshEntityRadii>1.451735 1.451735</DetailMeshEntityRadii>
+                    <DetailMeshEntityColors>1 1 1 1 1 1</DetailMeshEntityColors>
+                    <DetailMeshEntityModStamps>1605704519 1605704519</DetailMeshEntityModStamps>
+                </DetailMesh>
+                <DetailMesh File="detail_meshes/robot/tentacles/tentacle06.dae" NumOfInstances="3">
+                    <DetailMeshEntityIDs>268475036 268475481 268475505</DetailMeshEntityIDs>
+                    <DetailMeshEntityPositions>159.645 0.879386 117.578 167.317 1.67465 115.635 167.492 1.55195 115.703</DetailMeshEntityPositions>
+                    <DetailMeshEntityRotations>0.07752 -0.5867 0.558258 -0.581482 0.455103 -0.705597 0.083191 0.536743 0.752638 0.647186 0.093506 -0.077087</DetailMeshEntityRotations>
+                    <DetailMeshEntityRadii>1.476897 0.783399 1.476897</DetailMeshEntityRadii>
+                    <DetailMeshEntityColors>1 1 1 1 1 1 1 1 1</DetailMeshEntityColors>
+                    <DetailMeshEntityModStamps>1605704519 1605704519 1605704519</DetailMeshEntityModStamps>
+                </DetailMesh>
+            </Section>
+        </Sections>
+    </DetailMeshes>
+</HPLMapTrack_DetailMeshes>

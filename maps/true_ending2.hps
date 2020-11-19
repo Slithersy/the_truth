@@ -1,0 +1,751 @@
+#include "interfaces/Map_Interface.hps"
+#include "base/Inputhandler_Types.hps"
+
+#include "helpers/helper_map.hps"
+#include "helpers/helper_props.hps"
+#include "helpers/helper_effects.hps"
+#include "helpers/helper_audio.hps"
+#include "helpers/helper_imgui.hps"
+#include "helpers/helper_sequences.hps"
+#include "helpers/helper_game.hps"
+#include "helpers/helper_modules.hps"
+#include "helpers/helper_ai.hps"
+#include "helpers/helper_areas.hps"
+#include "helpers/helper_player.hps"
+
+//--------------------------------------------------
+ 
+/*Place any global values here. These must be const variables as they will not be saved*/
+/*This is also the place for enums and classes, but these should be avoided whenever possible*/
+ 
+//--------------------------------------------------
+ 
+class cScrMap : iScrMap
+{
+	//--------------------------------------------
+ 
+	//////////////////////////////////////////////////////////////////////////////////////////
+	// ==============
+	// MAIN CALLBACKS
+	// ==============
+	//{///////////////////////////////////////////////////////////////////////////////////////
+ 
+	//-------------------------------------------------------
+ 
+	////////////////////////////
+	// Set up map environment
+	void Setup()
+	{
+		Effect_Bloom_FadeBrightPass(0.75f, 2);
+		Effect_Bloom_FadeBloomWidth(128, 2);
+		Effect_Bloom_FadeBloomFalloff(0.5f, 2);
+		Effect_Bloom_FadeBloomTint(1, 1, 1, 2);
+	}
+	
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// Run first time starting map
+	void OnStart()
+	{
+		Voice_SetSource("David", "David", 1.0f, 16.0f, true, 16.0f, 22000, 500, eLuxVoiceSourceFreqencyFlag_LowPass);	
+		Sound_PreloadGroup("00_06_lab/VIPScriptedEvents", true);
+		Sound_PreloadGroup("Player/reaction", true);
+		Sound_PreloadGroup("level_amb_shared_machines/train_door", true);
+		Sound_PreloadGroup("level_amb_shared_props/lever_clunk", true);
+		Sound_PreloadGroup("Entities_OceanBottom/lever/lever", true);
+		Sound_PreloadGroup("level_amb_shared_machines/misc/lights", true);
+		Sound_PreloadGroup("01_01_upsilon_awake/sfx/wake_up", true);
+		ImGui_PreloadImage("munshi_scary", eImGuiGfx_Texture);
+		Map_Preload("true_ending3.hpm");
+		
+		
+		Player_SetClothing("default");
+		Player_SetFootWear("default");
+		Effect_Fade_Out(0);
+		
+		Sound_PreloadGroup("Flashback/Level/01_01", true);
+		
+		Player_SetAmbientLight_None(true);
+		
+		Sound_SetGlobalVolume(0.0f, eSoundEntryType_WorldAll);
+		Sound_SetGlobalVolume(0.0f, eSoundEntryType_GuiWorld);
+		Map_AddTimer("timer_kickoffintro",0.1,"TimerKickoffIntro");
+		PlayerHands_SetHandModel_Human();
+		Player_SetFlashlightDisabled(true);
+		
+		
+		//Crater stuff
+		Entity_Preload("fastfood_box_wrapped.ent");
+		ParticleSystem_Preload("welding_oneshot.ps");
+		ParticleSystem_Preload("loop_Hot_food.ps");
+		Sound_PreloadGroup("Entities_Station/spots/sparks", true);
+		Sound_PreloadGroup("level_amb_shared_props/button", true);
+	}
+	
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// Preload data
+	
+	void PreloadData()
+	{
+		PlayerHands_PreloadHandModel_Human();
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// Run when entering map
+	void OnEnter()
+	{	
+		MainMenu_SetBGPhase(eMainMenuPhase_Initial_To_1_3);
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// Run when leaving map
+	void OnLeave()
+	{
+		if(mlImageTrailID>=0)
+		{
+			cLux_AddDebugMessage("FadeOutImageTrail!");
+			Effect_ImageTrail_FadeOut(mlImageTrailID,10.0f);
+			mlImageTrailID=-1;
+		}
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// The player has died.
+	void OnPlayerKilled(int alRecentDeaths, const tString&in asSource)
+	{
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// To get when player makes input (mostly used for debug)
+	void OnAction(int alAction, bool abPressed) 
+	{
+		if(abPressed==false) return;
+		
+		if(alAction == eAction_Test1)
+		{
+		}
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// This only used for pure debug purposes when info needs to printed.
+	float DrawDebugOutput(cGuiSet @apSet,iFontData @apFont,float afY)
+	{
+		//afY = cLux_DrawDebugText("My Debug value:"+..., afY);
+		return afY;
+	}
+ 
+	//-------------------------------------------------------
+ 
+	//} END MAIN CALLBACKS
+ 
+ 
+	//////////////////////////////////////////////////////////////////////////////////////////
+	// ==============
+	// MAIN FUNCTIONS
+	// ==============
+	//{///////////////////////////////////////////////////////////////////////////////////////
+ 
+	//-------------------------------------------------------
+ 
+	/*Put any variables that are used in more than one scene here.*/
+ 
+	//-------------------------------------------------------
+ 
+	/*Put any functions that are used in more than one scene here.*/
+ 
+	//-------------------------------------------------------
+ 
+	//} END MAIN FUNCTIONS
+ 
+	//////////////////////////////////////////////////////////////////////////////////////////
+	// ==============
+	// SCENE X *NAME OF SCENE*
+	// ==============
+	//{//////////////////////////////////////////////////////////////////////////////////////
+ 
+		 /////////////////////////////////////////
+		 // General
+		 //{//////////////////////////////////////
+		 
+		//-------------------------------------------------------
+	 
+		/*Put any variables that are used by many events in Scene X here.*/
+	 
+		//-------------------------------------------------------
+	 
+		/*Put any functions that are used in more than one event in Scene X here.*/
+	 
+		//-------------------------------------------------------
+		
+		//} END General	
+	 
+		 /////////////////////////////////////////
+		 // Event *Name Of Event*
+		 //{//////////////////////////////////////
+	 
+		 //-------------------------------------------------------
+	 
+		 /*Put any variables that are only used in Scene X, Event X here.*/
+	 
+		 //-------------------------------------------------------
+	 
+		 /*Put any functionsthat are only used in Scene X, Event X here.*/
+	 
+		 //-------------------------------------------------------
+	 
+		 //} END Event *Name Of Event*
+	 
+	 //} END SCENE X
+ 
+ 
+	 /////////////////////////////////////////
+	 // ==============
+	 // TERMINALS
+	 // ==============
+	 //{//////////////////////////////////////
+ 
+		 //-------------------------------------------------------
+	 
+		 /////////////////////////////////////////
+		 // Terminal *Name Of Terminal*
+		 //{//////////////////////////////////////
+	 
+		 //-------------------------------------------------------
+	 
+		 /*Put any variables that are only used Terminal here.*/
+	 
+		 //-------------------------------------------------------
+	 
+		 /*Put any functions that are only used Terminal here.*/
+	 
+		 //-------------------------------------------------------
+	 
+		 //} END Terminal *Name Of Terminal*
+	
+	//} END TERMINALS
+ 
+ 
+	//{ Custom Content Below : 
+	
+		//{ Look at hook :
+		void DoctorMunshi(const tString &in asName)
+		{
+			Voice_Play("1A_StumblingInDark", 0);
+		}
+		
+		void FOVChangeMunshi(const tString &in asName)
+		{
+			Player_FadeFOVMulTo(1.0f, 1.5f);
+		}
+		
+		void TriggerArea_1_OnPlayerLookAt(const tString &in asEntity, int alState)
+		{
+			//cLux_AddDebugMessage(" ")
+			Area_MoveLinearTo("TriggerArea_1", "TriggerArea_2", 2.2f, 5.0f);
+			Player_FadeFOVMulTo(0.7f, 1.5f);
+			Map_AddTimer( "MunshiLookFOVTimer", 1.4, "FOVChangeMunshi" );
+			Map_AddTimer( "MunshiLookSoundTimer", 0.2, "DoctorMunshi" );
+		}
+		//} 
+	
+		//{ Door exit interaction :
+		void ThisIsntFunny(const tString &in asName)
+		{
+			Voice_Play("1A_StumblingInDark", 1);
+		}
+
+		bool ShouldPlaySound = true;
+		bool CloseDoorAutomatic_OnPlayerInteract(const tString &in asParent, const tString &in asChild, int alState)
+		{
+			if (ShouldPlaySound==true)
+				{
+					Sound_CreateAtEntity("MunshiLookSound", "Player/reaction/air/gasp", "player");
+					Map_AddTimer( "IsntFunny", 2, "ThisIsntFunny" );
+					ShouldPlaySound = false;
+				}
+			SlideDoor_SetClosed("SlideDoor_1", true);
+			Button_SetLocked("SlideDoor_Button2", true, true);
+			Button_SetSwitchedOn("SlideDoor_Button1", false, true);
+			
+			return true;
+		}
+		//}
+	
+		//{ Final End functions :
+		
+			bool IsLevelPulled = false;
+			bool IsPlugAttached = false;
+			bool IsDoorOpen = false;
+		
+			void IsAttached_Check()
+			{
+				if (IsLevelPulled==true and IsPlugAttached==true)
+				{
+					SlideDoor_SetClosed("MAIN_DOOR_EXIT", false);
+					Sound_CreateAtEntity("MAIN_DOOR_SOUND_Start", "level_amb_shared_machines/train_door/train_open_loop", "MAIN_DOOR_EXIT");
+					
+					IsDoorOpen = true;
+				}
+				else
+				{
+					SlideDoor_SetClosed("MAIN_DOOR_EXIT", true);
+					
+					if (IsDoorOpen==true)
+					{
+						Sound_CreateAtEntity("MAIN_DOOR_SOUND_End", "level_amb_shared_machines/train_door/train_close_loop", "MAIN_DOOR_EXIT");
+					}
+					
+					IsDoorOpen = false;
+				}
+			}
+
+			void assembly_line_power_control_1_OnConnectionStateChange(const tString &in asEntity, int alState)
+			{
+				if (alState==1)
+				{
+					Sound_CreateAtEntity("LeverActivate", "level_amb_shared_props/lever_clunk/activate", "ControlFlowLever");
+					Entity_PlayAnimation("ControlFlowLever_fan", "spin", 1.0f, true, true);
+					Entity_SetEffectsActive("ControlFlowLever", true, true);
+					Sound_Play("carl_lever_fan", 1.0f);
+					IsLevelPulled = true;
+				}
+				else
+				{
+					Sound_CreateAtEntity("LeverActivate", "Entities_OceanBottom/lever/lever/lever_stop", "ControlFlowLever");
+					Entity_PlayAnimation("ControlFlowLever_fan", "switchoff", 1.0f, false, false);
+					Entity_SetEffectsActive("ControlFlowLever", false, false);
+					Sound_Stop("carl_lever_fan", 2.0f);
+					IsLevelPulled = false;
+				}
+				
+				IsAttached_Check();
+			}
+						
+			
+			bool StickyArea_1_Attach(const tString &in asStickyArea, const tString &in asBodyName)
+			{
+				IsPlugAttached = true;
+				
+				IsAttached_Check();
+				return true;
+			}
+			
+			void StickyArea_1_Detach(const tString &in asStickyArea, const tString &in asBodyName)
+			{
+				IsPlugAttached = false;
+				
+				IsAttached_Check();
+			}
+		
+		//}
+		
+		//{ Last Part (Scary Munshi stuff) :
+		
+			bool Door_ShutScary_SpeedChange(const tString &in asParent, const tString &in asChild, int alState)
+			{
+				Player_SetMoveSpeedMul(0.8f);
+				return true;
+			}
+		
+			bool Door_ShutScary_SpeedBack(const tString &in asParent, const tString &in asChild, int alState)
+			{
+				Player_SetMoveSpeedMul(1.0f);
+				return true;
+			}
+		
+			bool ShouldCallMunshi = false;
+			bool CalledMunshiUDed = false;
+			
+			bool Door_ShutScary_FuncMunshi(const tString &in asParent, const tString &in asChild, int alState)
+			{
+				SwingDoor_SetClosed("swingdoor_scanroom_corridor_3",  true,  true);
+				SwingDoor_SetLocked("swingdoor_scanroom_corridor_3",  true,  true);
+				return true;
+			}
+			
+			bool Door_ShowUpScary_FuncVar(const tString &in asParent, const tString &in asChild, int alState)
+			{
+				SlideDoor_SetClosed("MAIN_DOOR_EXIT", false);
+				ShouldCallMunshi = true;
+				return false;
+			}
+			
+			void TurnLightBackOn(const tString &in asName)
+			{
+				Lamp_SetLit("ceiling_shutter_large_white_noshutter_*", true, false);
+				Lamp_SetLit("fluorescent_tube_curved_special_nolight_*", true, false);
+				Lamp_SetLit("ServerLight1_*", false, false);
+				Billboard_SetVisible("Billboard_*", true);
+			}
+			
+			void OnGui(float afTimeStep)
+			{
+				if (CalledMunshiUDed==true)
+				{
+					cImGuiGfx gfx;
+					gfx.SetFile("munshi_scary.dds");
+					gfx.mType = eImGuiGfx_Texture;
+					
+					ImGui_DrawGfx(gfx, cVector3f(-227.5,0,100), ImGui_GetSize(), cColor(1,1));
+				}
+			}
+			
+			void ChangeMap(const tString &in asName)
+			{
+				Map_ChangeMap("true_ending3.hpm","PlayerStartArea_1","","");
+			}
+			
+			void EndMunshiTalk(const tString &in asName)
+			{
+				Sound_CreateAtEntity("Scary_MunshiAppearFromNowhere_MunshiTeleportSimon", "Player/reaction/damage", "player");
+				CalledMunshiUDed = true;
+				
+				Map_AddTimer( "Scary_MunshiAppearFromNowhere_ChangeMap", 0.3, "ChangeMap" );
+			}
+			
+			bool Door_ShowUpScary_FuncMunshi(const tString &in asParent, const tString &in asChild, int alState)
+			{
+				if (ShouldCallMunshi==true)
+				{
+					//Yes Munshi is very powerful
+					Lamp_SetLit("ceiling_shutter_large_white_noshutter_*", false, false);
+					Lamp_SetLit("fluorescent_tube_curved_special_nolight_*", false, false);
+					Lamp_SetLit("ServerLight1_*", false, false);
+					Billboard_SetVisible("Billboard_*", false);
+					
+					Map_AddTimer( "Scary_MunshiAppearFromNowhere", 0.3, "TurnLightBackOn" );
+					Sound_CreateAtEntity("Scary_MunshiAppearFromNowhere_Light", "level_amb_shared_machines/misc/lights/fluorescent_light_flicker", "ceiling_shutter_large_white_noshutter_26");
+					Sound_CreateAtEntity("Scary_MunshiAppearFromNowhere_SimonHurt", "Player/reaction/air/hurt", "player");
+
+					Player_SetMoveSpeedMul(0.3f);
+					Effect_TimeGlitch_Start(0.2, 1, 0.4f, true, 0.8f);
+					Effect_ChromaticAberration_StartAnim(cMath_RandRectf(0.2f, 0.5f)*1.0f, 0.1, 1, cVector2f(1,0.1f));
+					
+					Voice_SetSource("David", "David", 1000, 1000, true, 1000);
+					NPC_SetMainAnimation("David", "server_idle", true,"",0.0f);
+					NPC_SetMainAnimation("David", "talk_idle", true, "", 0.3f);
+					Dialog_Begin();
+						Dialog_AddBranch("GreetDavid");
+							Dialog_AddPause(1.0f);	// Pause for animation
+							Dialog_AddSubject("7_GreetDavid");
+					Dialog_End();
+					
+					Map_AddTimer( "Scary_MunshiAppearFromNowhere_EndMunshiTalk", 5, "EndMunshiTalk" );
+					return false;
+				}
+				return true;
+			}
+		//} Scary stuff end
+		
+		//{ Crater's Food Machine Thing :
+	 
+		//-------------------------------------------------------
+	 
+		/*Put any variables that are used in more than one scene here.*/
+		
+		array<tString> mvFoodIngredients;
+		int mlFoodPrinted = 1;
+	 
+		//-------------------------------------------------------
+	 
+		/*Put any functions that are used in more than one scene here.*/
+		
+		bool CollideFoodPrinter(const tString &in asParent, const tString &in asChild, int alState)
+		{
+			if (alState == 1)
+			{
+				//Add inserted ingredients to array
+				mvFoodIngredients.insertAt(0, asChild);
+				
+				tString sInsertedFood = mvFoodIngredients[0]; //Debug
+			}
+			if (alState == -1)
+			{
+				//Remove ingredients from array
+				tString sRemovedFood = mvFoodIngredients[mvFoodIngredients.find(asChild)]; //Debug
+				mvFoodIngredients.removeAt(mvFoodIngredients.find(asChild));
+			}
+			return true;
+		}
+	 
+	 
+		void FoodPrinterButton_OnPlayerInteract(const tString &in asEntity)
+		{
+			Sound_CreateAtEntity("FoodMaker_ButtonSound", "level_amb_shared_props/button/reactor_button", "FoodPrinterButton", 0, false, 0.5f);
+			
+			//Only enable food once and only when ingredients are in printer.
+			if(mvFoodIngredients.length() > 0)
+			{
+				//Disable ingredients used to make food
+				for (int i = 0; i < mvFoodIngredients.length(); i++)
+				{
+					tString sFoodEntity = mvFoodIngredients[i];
+					ParticleSystem_CreateAtEntityExt("PS_Ingredient_Effect_"+i, "welding_oneshot.ps", sFoodEntity, true, cColor_White, 50.0f);
+					Map_AddTimer(sFoodEntity, 0.125f, "TimerRemoveIngredient");
+				}
+				//Clear array then create prepared food.
+				mvFoodIngredients.resize(0);
+				ParticleSystem_CreateAtEntityExt("PS_Food_Appearing_Effect", "welding_oneshot.ps", "FoodSpawnTarget", true, cColor_White, 50.0f);
+				Map_AddTimer("FoodAppear", 0.25f, "TimerActivateFood");
+			}
+		}
+		
+		void TimerColderFood(const tString &in asTimer)
+		{
+			if (asTimer[0] == 'C')
+			{
+				ParticleSystem_Destroy("PS_"+asTimer);
+			}
+			else
+			{
+				ParticleSystem_Destroy("PS_Hot_"+asTimer);
+				ParticleSystem_CreateAtEntityExt("PS_Colder_"+asTimer, "loop_Hot_food.ps", asTimer, true, cColor_White, 1.0f);
+				Map_AddTimer("Colder_"+asTimer, 8.0f, "TimerColderFood");
+			}
+		}
+		
+		void TimerActivateFood(const tString &in asTimer)
+		{
+			//Entity_SetActive("cooked_food", true);
+			Entity_CreateAtEntity("cooked_food_"+mlFoodPrinted,"fastfood_box_wrapped.ent","FoodSpawnTarget",false);
+			
+			//Find better food printing sounds?
+			Sound_CreateAtEntity("food_zap", "Entities_Station/spots/sparks/tiny_sparks_oneshot", "cooked_food_"+mlFoodPrinted);
+			
+			//Add steam to food
+			ParticleSystem_CreateAtEntityExt("PS_Hot_cooked_food_"+mlFoodPrinted, "loop_Hot_food.ps", "cooked_food_"+mlFoodPrinted, true, cColor_White, 2.1f);
+			Map_AddTimer("cooked_food_"+mlFoodPrinted, 7.5f, "TimerColderFood");
+			mlFoodPrinted++;
+		}
+		
+		void TimerRemoveIngredient(const tString &in asTimer)
+		{
+			Sound_CreateAtEntity("food_zap", "Entities_Station/spots/sparks/tiny_sparks_oneshot", asTimer);
+			Entity_SetActive(asTimer, false);
+		}
+
+		//} END CRATER
+		
+		//{ Get up from chair :
+		float mfPlayerSpeedOnWakeup = 1.0f;
+		bool mbStandUpSoundTriggered = false;
+		bool mbNervousBreathingPlaying = false;
+		bool mbPlayerStoodUp = false;
+		bool mbHelmetPhaseTwoStarted = false;
+		int mlImageTrailID = -1;
+		int mlCurrentImageTrailEffectID = 0;
+		int mlDoFEffectID = 0;
+		int mlDOFLightsOn = -1;
+		cSequenceStatesData mIntroSequenceState;
+		
+		void DisableScreenEffects()
+		{
+			///////////////////////////
+			// Clear lingering effects
+			Effect_ImageTrail_FadeOut(mlImageTrailID, 5.0f);
+			Effect_ImageTrail_FadeOut(mlCurrentImageTrailEffectID, 5.0f);
+			Effect_DoF_FadeOut(mlDoFEffectID, 5.0f);
+			Effect_DoF_FadeOut(mlDOFLightsOn,7.0f);
+		}
+		
+		void timer_nervousbreathing(const tString &in asTimer)
+		{
+			Emotion_PlayEventBreath("01_01_upsilon_awake/sfx/wake_up/nervous", 0);
+		}
+		
+		void SetupIntro()
+		{
+			///////////////////////////////////
+			// Set sound back!
+			Sound_SetGlobalVolume(1.0f, eSoundEntryType_WorldAll);
+			Sound_SetGlobalVolume(1.0f, eSoundEntryType_GuiWorld);
+			
+			///////////////////////////////////
+			// Set player start!
+			Player_Teleport("PlayerStartArea_1",true);
+			Entity_SetActive("SimonLegs",true);
+			Entity_SetActive("SimonHands",true);
+			Entity_PlayAnimation("SimonHands","chair_00_03_scan",0.0,true);
+			
+			///////////////////
+			// Visual setup
+			Effect_Fade_Out(0);
+			Player_FadeFOVMulTo(0.75f, 0);
+			mlCurrentImageTrailEffectID = Effect_ImageTrail_Start(0.8f, 0, 1500.0f, 15.0f);
+			mlDoFEffectID = Effect_DoF_Start(0.1f, 0.5f, 1, 0);
+			
+			///////////////////
+			// Animation
+			CameraAnimation_Begin("WakeupAnim", "", false);
+					
+			//////////////////////////////////////
+			// Start intro after a short delay
+			Map_AddTimer("", 0.1f, "SequenceIntro");
+			
+			mlImageTrailID = Effect_ImageTrail_Start(0.5f, 0, -1, 15.0f);
+			Map_AddTimer("RemoveImageTrail", 10, "Timer_RemoveImageTrail");
+		}
+		
+		void Timer_RemoveImageTrail(const tString&in asTimer)
+		{
+			if(mlImageTrailID>=0)
+			{
+				Effect_ImageTrail_FadeOut(mlImageTrailID,10.0f);
+				mlImageTrailID=-1;
+			}
+		}
+		
+		void SequenceIntro(const tString &in asName)
+		{
+			Sequence_Begin("SequenceIntro", mIntroSequenceState);
+
+			if (Sequence_DoStepAndWait(3.0f))
+			{
+				//////////////////////////////////
+				// Wakeup sounds and audio effects
+				Sound_PlayGui("01_01_upsilon_awake/sfx/wake_up/wake_up_event", 1.0f, eSoundEntryType_Gui);
+				
+				//////////////////////////////////
+				// Camera Effects
+				Player_FadeFOVMulTo(1.0f, 0.25f);
+				Effect_Fade_In(1.5f);
+				
+				// visual fx
+				mlDOFLightsOn = Effect_DoF_Start(0.2, 2,1, 0.01);
+				Effect_DoF_FadeFocus(mlDOFLightsOn,0.2,2,0.01);
+				
+				Effect_ImageTrail_Start(2, 0.001, 4, 6);
+			}
+			else if (Sequence_DoStepAndWait(1.5f))
+			{
+				Music_PlayExt("01_01_awakendrone", true, 0.25f, 1.0f, 9.0f, 0.0f, eMusicPrio_MinorEvent, false);
+			}
+			else if (Sequence_DoStepAndWait(2.5f))
+			{
+				Effect_Fade_Out(2.0f);
+			}
+			else if (Sequence_DoStepAndWait(2.0f))
+			{
+				
+				///////////////////////////////
+				// Switch to the stand up animation
+				CameraAnimation_End();
+				
+				//cSound_FadeLowPassFilter(22000.0f, 0.0f, 12.0f, eSoundEntryType_World);
+				CameraAnimation_Begin("IntroAnim", "", true);
+				CameraAnimationNode_SetInteractiveMovement("IntroAnim_1", false);
+				Player_FadeMoveSpeedMulTo(mfPlayerSpeedOnWakeup,0.1f);
+				
+				/////////////////////////////
+				// Fade out DOF effects
+				Effect_DoF_FadeFalloff(mlDoFEffectID, 0, 2.5f);
+					
+				Effect_Fade_In(3.0f);
+			}
+			else if (Sequence_DoStepAndWait(0.5f))
+			{
+				//////////////////////////////////////////
+				// Lift the helmet
+				Sound_FadeGlobalVolume(1.0f, 3.0f, eSoundEntryType_GuiWorld);
+				Sound_FadeGlobalVolume(1.0f, 6.0f, eSoundEntryType_WorldAll);
+				Prop_MoveLinearTo("chair_scan_helmet", "chair_scan_helmet_target_1", 0.35, 1, 0.25, true, "MoveTo_ScanHelmet1");
+				Prop_AlignRotation("chair_scan_helmet","chair_scan_helmet_target_1",0.35,1,0.25,true,"");
+				
+				///////////////////////////////
+				// Enable flashlight
+				Player_SetFlashlightDisabled(false);
+			}
+			else if (Sequence_DoStepAndWait(1.5f))
+			{
+				Effect_DoF_FadeFalloff(mlDoFEffectID, 0, 6.f);
+			}
+			else if (Sequence_DoStepAndWait(0.0f))
+			{
+				CameraAnimationNode_SetInteractiveMovement("IntroAnim_1", true);
+				Voice_Play("1A_StumblingInDark", 2);
+			}
+			
+			Sequence_End();
+		}
+		
+		bool StandUpSound(const tString &in asEntity, int alDirection)
+		{
+			if (asEntity == "IntroAnim_1" && alDirection == 1)
+			{
+				if(mbStandUpSoundTriggered==false)
+				{
+					Sound_CreateAtEntity("StandUpAnimation", "01_01_upsilon_awake/sfx/wake_up/stand_up_chair", "Player", 0.0f, false, 1.0f);	
+					mbStandUpSoundTriggered = true;
+				}
+				
+				if(mbNervousBreathingPlaying==false)
+				{
+					Emotion_PlayEventBreath("01_01_upsilon_awake/sfx/wake_up/nervous", 0);
+					Map_AddTimer("nervousbreathing", 12.7, "timer_nervousbreathing");
+					mbNervousBreathingPlaying = true;
+				}
+
+				return true;
+			}
+			
+			else if (asEntity == "IntroAnim_*" && alDirection == -1)
+			{
+				Sound_Stop("StandUpAnimation", 0.25f);
+				mbStandUpSoundTriggered = false;
+				return true;
+			}
+			return true;
+		}
+		
+		bool EventGettingUp(const tString &in asEntity, int alDirection)
+		{
+			if (alDirection == 1)
+			{
+				/////////////////////////////////////
+				// When getting up, fade out the image trails and give the player some small dizzyness
+				if (Map_TimerExists("timer_dizzy")== false)
+				{
+					//Map_AddTimer("timer_dizzy",4.0f,"TimerDizzy");
+					Effect_ImageTrail_FadeOut(mlCurrentImageTrailEffectID, 6.0f);
+					Entity_SetActive("SimonLegs",false);
+					Entity_SetActive("SimonHands",false);
+					DisableScreenEffects();
+					Music_Stop(9.0f, eMusicPrio_MinorEvent);
+				}
+				mbPlayerStoodUp = true;
+			}
+			return true;
+		}
+		
+		void MoveTo_ScanHelmet1(const tString &in asProp)
+		{
+			if (mbHelmetPhaseTwoStarted) return;
+			
+			
+			Prop_MoveLinearTo("chair_scan_helmet", "chair_scan_helmet_target_2", 1, 1, 0.25, true, "MoveTo_ScanHelmet1");
+			Prop_AlignRotation("chair_scan_helmet","chair_scan_helmet_target_2",0.35,1,0.25,true,"");
+			mbHelmetPhaseTwoStarted = true;
+		}
+		
+		void TimerKickoffIntro(const tString &in asTimer)
+		{
+			SetupIntro();
+		}
+	//}
+	
+	
+	// Custom Content End }
+}

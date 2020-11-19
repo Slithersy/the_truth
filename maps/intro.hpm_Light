@@ -1,0 +1,11 @@
+<HPLMapTrack_Light ID="8EB68FD25D488A4B165AD7F7FEBE31D5AC92458E" Version="1.00">
+    <IrradianceSets>
+        <Set Name="Default" Priority="0" LightBoost="1" MaxDistance="200" BounceNum="3" Quality="Normal" UseFog="true" UseDepthOfField="true" UseSkybox="true" Preview="true" />
+    </IrradianceSets>
+    <Section Name="Ian@IANSWORKLAPTOP">
+        <Objects />
+    </Section>
+    <Section Name="Potato@POTATO">
+        <Objects />
+    </Section>
+</HPLMapTrack_Light>

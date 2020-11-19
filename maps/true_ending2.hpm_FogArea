@@ -1,0 +1,7 @@
+<HPLMapTrack_FogArea ID="4C512D651E745718DF4D9A528753E7E1F2BAD9" Version="1.00">
+    <Section Name="Potato@POTATO">
+        <Objects>
+            <FogArea ID="268437699" Name="FogArea_1" CreStamp="1590423730" ModStamp="1590423738" WorldPos="-56.4375 2 -11.875" Rotation="0 0 0" Scale="10.125 4.125 8.125" Color="0 0 0 1" Brightness="1" Start="0" End="10" FalloffExp="1" ShownBacksideWhenOutside="false" ShownBacksideWhenInside="true" Underwater="false" NoiseStrength="0" NoiseSize="8" NoiseTurbulence="0.5 0.5 0.5" Skybox="false" CulledByDistance="false" CulledByFog="true" UID="16 11200 268437699" />
+        </Objects>
+    </Section>
+</HPLMapTrack_FogArea>
