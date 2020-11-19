@@ -1,0 +1,271 @@
+<Entity>
+    <ModelData>
+        <Entities />
+        <Mesh Filename="entities/character/deepsea_diver/deepsea_diver_monster/deepsea_diver_monster.fbx">
+            <SubMesh ID="0" Name="body" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="10959" Material="" />
+            <SubMesh ID="1" Name="Tentacleshead" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="1354" Material="" />
+            <SubMesh ID="2" Name="WauLight" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="186" Material="" />
+            <SubMesh ID="3" Name="tentaclesKneeL" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="280" Material="" />
+            <SubMesh ID="4" Name="tentacleKneerR" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="312" Material="" />
+            <SubMesh ID="5" Name="tentacleShoulderR001_(Conflict_Present)" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="536" Material="" />
+            <SubMesh ID="6" Name="Tentaclesbody" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="1042" Material="" />
+            <SubMesh ID="7" Name="tentacleArmR" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="268" Material="" />
+            <SubMesh ID="8" Name="helmet" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="1436" Material="" />
+            <SubMesh ID="9" Name="tentacle_weapon_straighten" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="576" Material="" />
+        </Mesh>
+        <Bones>
+            <Bone ID="11" Name="Bip001" />
+            <Bone ID="12" Name="Bip001Pelvis" />
+            <Bone ID="13" Name="Bip001Spine" />
+            <Bone ID="14" Name="Bip001Spine1" />
+            <Bone ID="15" Name="Bip001Spine2" />
+            <Bone ID="16" Name="Bip001Neck" />
+            <Bone ID="17" Name="Bip001Head" />
+            <Bone ID="18" Name="Bip001 HeadNub" />
+            <Bone ID="19" Name="Bip001Tentacleshead_01" />
+            <Bone ID="20" Name="Bip001Tentacleshead_0102" />
+            <Bone ID="21" Name="Bip001Tentacleshead_0103" />
+            <Bone ID="22" Name="Bip001Tentacleshead_0104" />
+            <Bone ID="23" Name="Bip001 Tentacleshead_01Nub" />
+            <Bone ID="24" Name="Bip001Tentacleshead_02" />
+            <Bone ID="25" Name="Bip001Tentacleshead_0202" />
+            <Bone ID="26" Name="Bip001 Tentacleshead_02Nub" />
+            <Bone ID="27" Name="Bip001Tentacleshead_03" />
+            <Bone ID="28" Name="Bip001Tentacleshead_0302" />
+            <Bone ID="29" Name="Bip001Tentacleshead_0303" />
+            <Bone ID="30" Name="Bip001 Tentacleshead_03Nub" />
+            <Bone ID="31" Name="Bip001Tentacleshead_04" />
+            <Bone ID="32" Name="Bip001Tentacleshead_0402" />
+            <Bone ID="33" Name="Bip001Tentacleshead_0403" />
+            <Bone ID="34" Name="Bip001 Tentacleshead_04Nub" />
+            <Bone ID="35" Name="Bip001Tentacleshead_05" />
+            <Bone ID="36" Name="Bip001Tentacleshead_0502" />
+            <Bone ID="37" Name="Bip001Tentacleshead_0503" />
+            <Bone ID="38" Name="Bip001 Tentacleshead_05Nub" />
+            <Bone ID="39" Name="Bip001Tentacle_feed" />
+            <Bone ID="40" Name="Bip001Tentacle_feed02" />
+            <Bone ID="41" Name="Bip001Tentacle_feed03" />
+            <Bone ID="42" Name="Bip001Tentacle_feed04" />
+            <Bone ID="43" Name="Bip001Tentacle_feed05" />
+            <Bone ID="44" Name="Bip001Tentacle_feed06" />
+            <Bone ID="45" Name="Bip001Tentacle_feed07" />
+            <Bone ID="46" Name="Bip001Tentacle_feed08" />
+            <Bone ID="47" Name="Bip001Tentacle_feed09" />
+            <Bone ID="48" Name="Bip001Tentacle_feed10" />
+            <Bone ID="49" Name="Bip001Tentacle_feed11" />
+            <Bone ID="50" Name="Bip001Tentacle_feed12" />
+            <Bone ID="51" Name="Bip001Tentacle_feed13" />
+            <Bone ID="52" Name="Bip001Tentacle_feed14" />
+            <Bone ID="53" Name="Bip001 Tentacle_feedNub" />
+            <Bone ID="54" Name="Bip001Tentaclesbody_01" />
+            <Bone ID="55" Name="Bip001Tentaclesbody_0102" />
+            <Bone ID="56" Name="Bip001Tentaclesbody_0103" />
+            <Bone ID="57" Name="Bip001Tentaclesbody_0104" />
+            <Bone ID="58" Name="Bip001 Tentaclesbody_01Nub" />
+            <Bone ID="59" Name="Bip001Tentaclesbody_02" />
+            <Bone ID="60" Name="Bip001Tentaclesbody_0202" />
+            <Bone ID="61" Name="Bip001 Tentaclesbody_02Nub" />
+            <Bone ID="62" Name="Bip001Tentaclesbody_03" />
+            <Bone ID="63" Name="Bip001 Tentaclesbody_03Nub" />
+            <Bone ID="64" Name="Bip001Tentaclesbody_04" />
+            <Bone ID="65" Name="Bip001 Tentaclesbody_04Nub" />
+            <Bone ID="66" Name="Bip001Tentaclesbody_05" />
+            <Bone ID="67" Name="Bip001 Tentaclesbody_05Nub" />
+            <Bone ID="68" Name="Bip001Tentaclesbody_06" />
+            <Bone ID="69" Name="Bip001 Tentaclesbody_06Nub" />
+            <Bone ID="70" Name="Bip001LClavicle" />
+            <Bone ID="71" Name="Bip001LUpperArm" />
+            <Bone ID="72" Name="Bip001LForearm" />
+            <Bone ID="73" Name="Bip001LHand" />
+            <Bone ID="74" Name="Bip001LFinger0" />
+            <Bone ID="75" Name="Bip001LFinger01" />
+            <Bone ID="76" Name="Bip001LFinger02" />
+            <Bone ID="77" Name="Bip001 L Finger0Nub" />
+            <Bone ID="78" Name="Bip001LFinger1" />
+            <Bone ID="79" Name="Bip001LFinger11" />
+            <Bone ID="80" Name="Bip001LFinger12" />
+            <Bone ID="81" Name="Bip001 L Finger1Nub" />
+            <Bone ID="82" Name="Bip001LFinger2" />
+            <Bone ID="83" Name="Bip001LFinger21" />
+            <Bone ID="84" Name="Bip001LFinger22" />
+            <Bone ID="85" Name="Bip001 L Finger2Nub" />
+            <Bone ID="86" Name="Bip001LFinger3" />
+            <Bone ID="87" Name="Bip001LFinger31" />
+            <Bone ID="88" Name="Bip001LFinger32" />
+            <Bone ID="89" Name="Bip001 L Finger3Nub" />
+            <Bone ID="90" Name="Bip001LFinger4" />
+            <Bone ID="91" Name="Bip001LFinger41" />
+            <Bone ID="92" Name="Bip001LFinger42" />
+            <Bone ID="93" Name="Bip001 L Finger4Nub" />
+            <Bone ID="94" Name="Bip001tenctacleShoulderL_03" />
+            <Bone ID="95" Name="Bip001tenctacleShoulderL_0302" />
+            <Bone ID="96" Name="Bip001 tenctacleShoulderL_03Nub" />
+            <Bone ID="97" Name="Bip001tentacleShoulderL_03" />
+            <Bone ID="98" Name="Bip001tentacleShoulderL_0302" />
+            <Bone ID="99" Name="Bip001 tentacleShoulderL_03Nub" />
+            <Bone ID="100" Name="Bip001tentacleShoulderL_01" />
+            <Bone ID="101" Name="Bip001tentacleShoulderL_0102" />
+            <Bone ID="102" Name="Bip001 tentacleShoulderL_01Nub" />
+            <Bone ID="103" Name="Bip001tentacleShoulderL_02" />
+            <Bone ID="104" Name="Bip001tentacleShoulderL_0202" />
+            <Bone ID="105" Name="Bip001 tentacleShoulderL_02Nub" />
+            <Bone ID="106" Name="Bip001RClavicle" />
+            <Bone ID="107" Name="Bip001RUpperArm" />
+            <Bone ID="108" Name="Bip001RForearm" />
+            <Bone ID="109" Name="Bip001RHand">
+                <Sockets>
+                    <Socket ID="182" Name="EatPlayerCamera" CreStamp="0" ModStamp="1433344593" WorldPos="-0.74132 1.57279 0.214735" Rotation="0 0 0" Scale="1 1 1" SourceBoneName="" />
+                </Sockets>
+            </Bone>
+            <Bone ID="110" Name="Bip001RFinger0" />
+            <Bone ID="111" Name="Bip001RFinger01" />
+            <Bone ID="112" Name="Bip001RFinger02" />
+            <Bone ID="113" Name="Bip001 R Finger0Nub" />
+            <Bone ID="114" Name="Bip001RFinger1" />
+            <Bone ID="115" Name="Bip001RFinger11" />
+            <Bone ID="116" Name="Bip001RFinger12" />
+            <Bone ID="117" Name="Bip001 R Finger1Nub" />
+            <Bone ID="118" Name="Bip001RFinger2" />
+            <Bone ID="119" Name="Bip001RFinger21" />
+            <Bone ID="120" Name="Bip001RFinger22" />
+            <Bone ID="121" Name="Bip001 R Finger2Nub" />
+            <Bone ID="122" Name="Bip001RFinger3" />
+            <Bone ID="123" Name="Bip001RFinger31" />
+            <Bone ID="124" Name="Bip001RFinger32" />
+            <Bone ID="125" Name="Bip001 R Finger3Nub" />
+            <Bone ID="126" Name="Bip001RFinger4" />
+            <Bone ID="127" Name="Bip001RFinger41" />
+            <Bone ID="128" Name="Bip001RFinger42" />
+            <Bone ID="129" Name="Bip001 R Finger4Nub" />
+            <Bone ID="130" Name="Bip001tentacleArmR_02" />
+            <Bone ID="131" Name="Bip001tentacleArmR_0202" />
+            <Bone ID="132" Name="Bip001tentacleArmR_0203" />
+            <Bone ID="133" Name="Bip001 tentacleArmR_02Nub" />
+            <Bone ID="134" Name="Bip001tentacleArmR_01" />
+            <Bone ID="135" Name="Bip001tentacleArmR_0102" />
+            <Bone ID="136" Name="Bip001 tentacleArmR_01Nub" />
+            <Bone ID="137" Name="Bip001tenctacleShoulderR_03" />
+            <Bone ID="138" Name="Bip001tenctacleShoulderR_0302" />
+            <Bone ID="139" Name="Bip001 tenctacleShoulderR_03Nub" />
+            <Bone ID="140" Name="Bip001tentacleShoulderR_03" />
+            <Bone ID="141" Name="Bip001tentacleShoulderR_0302" />
+            <Bone ID="142" Name="Bip001 tentacleShoulderR_03Nub" />
+            <Bone ID="143" Name="Bip001tentacleShoulderR_01" />
+            <Bone ID="144" Name="Bip001tentacleShoulderR_0102" />
+            <Bone ID="145" Name="Bip001 tentacleShoulderR_01Nub" />
+            <Bone ID="146" Name="Bip001tentacleShoulderR_02" />
+            <Bone ID="147" Name="Bip001tentacleShoulderR_0202" />
+            <Bone ID="148" Name="Bip001 tentacleShoulderR_02Nub" />
+            <Bone ID="149" Name="Bip001RThigh" />
+            <Bone ID="150" Name="Bip001RCalf" />
+            <Bone ID="151" Name="Bip001RFoot" />
+            <Bone ID="152" Name="Bip001RToe0" />
+            <Bone ID="153" Name="Bip001 R Toe0Nub" />
+            <Bone ID="154" Name="Bip001tentacleKneerR_01" />
+            <Bone ID="155" Name="Bip001tentacleKneerR_0102" />
+            <Bone ID="156" Name="Bip001 tentacleKneerR_01Nub" />
+            <Bone ID="157" Name="Bip001tentacleKneerR_02" />
+            <Bone ID="158" Name="Bip001tentacleKneerR_0202" />
+            <Bone ID="159" Name="Bip001 tentacleKneerR_02Nub" />
+            <Bone ID="160" Name="Bip001LThigh" />
+            <Bone ID="161" Name="Bip001LCalf" />
+            <Bone ID="162" Name="Bip001LFoot" />
+            <Bone ID="163" Name="Bip001LToe0" />
+            <Bone ID="164" Name="Bip001 L Toe0Nub" />
+            <Bone ID="165" Name="Bip001tentacleKneerL_01" />
+            <Bone ID="166" Name="Bip001tentacleKneerL_0102" />
+            <Bone ID="167" Name="Bip001 tentacleKneerL_01Nub" />
+            <Bone ID="168" Name="Bip001tentacleKneerL_02" />
+            <Bone ID="169" Name="Bip001tentacleKneerL_0202" />
+            <Bone ID="170" Name="Bip001 tentacleKneerL_02Nub" />
+            <Bone ID="171" Name="body" />
+            <Bone ID="172" Name="Tentacleshead" />
+            <Bone ID="173" Name="WauLight" />
+            <Bone ID="174" Name="tentaclesKneeL" />
+            <Bone ID="175" Name="tentacleKneerR" />
+            <Bone ID="176" Name="tentacleShoulderR" />
+            <Bone ID="177" Name="Tentaclesbody" />
+            <Bone ID="178" Name="tentacleArmR" />
+            <Bone ID="179" Name="helmet" />
+            <Bone ID="180" Name="tentacle_weapon_straighten" />
+            <Bone ID="181" Name="tentacleShoulderR001" />
+        </Bones>
+        <Shapes />
+        <Bodies />
+        <Joints />
+        <Animations>
+            <Animation Name="eats_player" File="entities/character/deepsea_diver/deepsea_diver_monster/animations/eats_player.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="hear_player" File="entities/character/deepsea_diver/deepsea_diver_monster/animations/hear_player.dae_anim" Layer="Default" Speed="1">
+                <Event Name="hear_player" Time="0" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/hear_player" />
+                <Event Name="step_F" Time="0.34" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/hear_player_step_forward" />
+                <Event Name="step_B" Time="2.45" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/hear_player_step_backward" />
+            </Animation>
+            <Animation Name="idle" File="entities/character/deepsea_diver/deepsea_diver_monster/animations/idle.dae_anim" Layer="Default" Speed="1">
+                <Event Name="idle" Time="0" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/idle" />
+            </Animation>
+            <Animation Name="idle_extra01" File="entities/character/deepsea_diver/deepsea_diver_monster/animations/idle_extra01.dae_anim" Layer="Default" Speed="1">
+                <Event Name="idle_extra_01" Time="0" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/idle_extra_01" />
+            </Animation>
+            <Animation Name="idle_extra02" File="entities/character/deepsea_diver/deepsea_diver_monster/animations/idle_extra02.dae_anim" Layer="Default" Speed="1">
+                <Event Name="idle_extra_02" Time="0" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/idle_extra_02" />
+            </Animation>
+            <Animation Name="idle_extra03" File="entities/character/deepsea_diver/deepsea_diver_monster/animations/idle_extra03.dae_anim" Layer="Default" Speed="1">
+                <Event Name="idle_extra_03" Time="0" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/idle_extra_03" />
+            </Animation>
+            <Animation Name="run" File="entities/character/deepsea_diver/deepsea_diver_monster/animations/run.dae_anim" Layer="Default" Speed="0.19">
+                <Event Name="run" Time="0" Type="PlayLoopSound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/run" />
+                <Event Name="step_1" Time="0.267442" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/run_step" />
+                <Event Name="step_2" Time="0.634219" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/run_step" />
+                <Event Name="step_3" Time="1.10033" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/run_step" />
+                <Event Name="step_4" Time="1.46966" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/run_step" />
+                <Event Name="step_5" Time="1.88449" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/run_step" />
+                <Event Name="step_6" Time="2.20321" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/run_step" />
+                <Event Name="step_7" Time="2.61584" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/run_step" />
+                <Event Name="step_8" Time="2.9928" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/run_step" />
+            </Animation>
+            <Animation Name="walk" File="entities/character/deepsea_diver/deepsea_diver_monster/animations/walk.dae_anim" Layer="Default" Speed="2.7">
+                <Event Name="walk" Time="0" Type="PlayLoopSound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/walk" />
+                <Event Name="step_R" Time="0.8" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/walk_step_right" />
+                <Event Name="step_L" Time="2.35" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/walk_step_left" />
+            </Animation>
+            <Animation Name="walk_backwards" File="entities/character/deepsea_diver/deepsea_diver_monster/animations/walk.dae_anim" Layer="Default" Speed="-2.7">
+                <Event Name="step_R" Time="0.8" Type="PlaySound" DestSocket="" Value="npc_creatures/foley/inworld/deepsea_diver/walk_step_right" />
+                <Event Name="step_L" Time="2.35" Type="PlaySound" DestSocket="" Value="npc_creatures/foley/inworld/deepsea_diver/walk_step_left" />
+                <Event Name="walk" Time="3.7" Type="PlayLoopSound" DestSocket="" Value="" />
+            </Animation>
+        </Animations>
+        <ProcAnimations />
+    </ModelData>
+    <UserDefinedVariables EntityType="Agent_DeepseaSuit">
+        <Var Name="Health" Value="100" />
+        <Var Name="Toughness" Value="0" />
+        <Var Name="EventTag" Value="" />
+        <Var Name="VoiceSourceBone" Value="" />
+        <Var Name="CastShadows" Value="true" />
+        <Var Name="EffectsOnTime" Value="1" />
+        <Var Name="EffectsOffTime" Value="1" />
+        <Var Name="CharBodySize" Value="0.8 1.8 0.8" />
+        <Var Name="MeshPositionOffset" Value="0 0 0" />
+        <Var Name="MeshRotationOffset" Value="0 0 0" />
+        <Var Name="MeshScaleOffset" Value="1 1 1" />
+        <Var Name="CharBodyPosBone" Value="Bip001Pelvis" />
+        <Var Name="CharBodyBoneIsFeet" Value="false" />
+        <Var Name="CharBodyBoneYOffset" Value="0" />
+        <Var Name="CustomScriptFile" Value="" />
+        <Var Name="CustomScriptClass" Value="" />
+        <Var Name="CharMover_IdleAnim" Value="idle" />
+        <Var Name="CharMover_WalkAnim" Value="walk" />
+        <Var Name="CharMover_RunAnim" Value="run" />
+        <Var Name="CharMover_BackwardAnim" Value="walk_backwards" />
+        <Var Name="CharMover_IdleExtraAnim" Value="idle_extra0" />
+        <Var Name="CharMover_IdleExtraMinWait" Value="4" />
+        <Var Name="CharMover_IdleExtraMaxWait" Value="10" />
+        <Var Name="CharMover_IdleExtraPauseProcedural" Value="true" />
+        <Var Name="HeadTracker_Bones" Value="Bip001Neck Bip001Head" />
+        <Var Name="HeadTracker_BoneMuls" Value="0.5 0.5" />
+        <Var Name="HeadTracker_ChestBone" Value="Bip001Spine2" />
+        <Var Name="HeadTracker_SpeedMul" Value="1" />
+        <Var Name="HeadTracker_MaxSpeed" Value="1" />
+        <Var Name="HeadTracker_MaxAngle" Value="45" />
+    </UserDefinedVariables>
+</Entity>
