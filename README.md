@@ -12,3 +12,19 @@ There are some easter eggs so make sure you look around the rooms before proceed
 (Also yes this is a Munshi mod)
 
 -- Posting outside of Steam later on (probably today)
+
+# Installation
+- Download the mod. (Code > Download Zip)
+- Extract the zip file.
+- Move over the folder that CONTAINS THE CONTENTS of the mod (not a folder that contains a folder that contains the contents)
+  to [...\Steam\steamapps\common\SOMA\mods] or more simply if you don't use Steam [...\SOMA\mods].
+- Rename the folder to "true_ending". This is IMPORTANT! I didn't get it to work without it.
+
+# Running the mod
+- Open SOMA
+- Click "Play Mod"
+- Select "Play Custom Content"
+- Select "The Truth"
+- Click OK
+
+Have fun!
