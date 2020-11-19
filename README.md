@@ -11,8 +11,6 @@ If you enjoyed this mod and want to support me, you can check out my YouTube. It
 There are some easter eggs so make sure you look around the rooms before proceeding! :)
 (Also yes this is a Munshi mod)
 
--- Posting outside of Steam later on (probably today)
-
 # Installation
 - Download the mod. (Code > Download Zip)
 - Extract the zip file.
