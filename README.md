@@ -26,3 +26,5 @@ There are some easter eggs so make sure you look around the rooms before proceed
 - Click OK
 
 Have fun!
+
+Gameplay: https://youtu.be/rQkxJLvYM4c
