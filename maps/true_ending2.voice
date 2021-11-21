@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<VoiceData>
+ <Characters>
+  <Character ID="0" Name="Player" DisplayName="Simon" Actor="" AutoGenVoice="False" AutoGenVoiceFile="" AutoGenVoiceSoundFreq="1" WorldSpace="True" AffectedByReverb="True" TextToSpeechVoice="Default" DefaultCriteria="" EntryType="GUI" Volume="1" ReverbVolume="0.875" SpeakerSpread="40" EntitySource="" MinDist="0" MaxDist="0" MinFreq="22000" MaxFreq="22000" MaxListeningDist="-1" FrequencyFilter="None" />
+  <Character ID="1" Name="David" DisplayName="Munshi" Actor="" AutoGenVoice="False" AutoGenVoiceFile="" AutoGenVoiceSoundFreq="1" WorldSpace="False" AffectedByReverb="False" TextToSpeechVoice="Microsoft David Desktop" DefaultCriteria="" EntryType="GUIWorld" Volume="0.85" ReverbVolume="1" SpeakerSpread="40" EntitySource="Player" MinDist="0" MaxDist="0" MinFreq="22000" MaxFreq="22000" MaxListeningDist="-1" FrequencyFilter="None" />
+ </Characters>
+ <Effects>
+  <Effect ID="0" Name="General" GlobalStartEffectFile="" GlobalEndEffectFile="" GlobalVoiceOffset="1" />
+ </Effects>
+ <Scenes>
+  <Scene ID="0" Name="General" FocusPrio="0" DefaultCriteria="" Volume="1" ReverbVolume="1" />
+ </Scenes>
+ <Subjects>
+  <Subject Name="1A_StumblingInDark" UseSingleRandomLine="False" SceneId="0" EffectId="-1">
+   <Line CharacterId="0" Prio="0" PlayOnce="True">
+    <Sound Text="Hello? Mr Munshi?" Timestamp="2020-05-25 08:03" />
+   </Line>
+   <Line CharacterId="0" Prio="0" PlayOnce="True">
+    <Sound Text="This isn't funny." FileName="general_1a_stumblingindark_003_player_001" Timestamp="2020-05-25 07:57" />
+   </Line>
+   <Line CharacterId="0" Prio="0" PlayOnce="True">
+    <Sound Text="What? Where am I?" FileName="datamine_3a_entertunnel_001_simon_001" Timestamp="2020-05-26 04:07" />
+   </Line>
+  </Subject>
+  <Subject Name="7_GreetDavid" UseSingleRandomLine="False" SceneId="0" EffectId="-1">
+   <Line CharacterId="1" Prio="0" PlayOnce="True">
+    <Sound Text="Oh, hi! Didn't hear you come in. Simon Jarret, right?" EndPadding="0.1" FileName="general_7_greetdavid_001_david_001" Timestamp="2020-05-25 07:57" />
+   </Line>
+  </Subject>
+ </Subjects>
+</VoiceData>

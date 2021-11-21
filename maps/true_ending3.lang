@@ -1,0 +1,18 @@
+<LANGUAGE>
+    <CATEGORY Name="Voices_true_ending3">
+        <Entry Name="general_5_findnotebook_001_player_001">Hm, this might be something.</Entry>
+        <Entry Name="comment_3_codewithouthint_001_player_001">Ah, I guessed it. That&apos;s amazing.</Entry>
+        <Entry Name="lang/eng/voices/true_ending3/recording_1_hello.ogg">Hello?</Entry>
+        <Entry Name="lang/eng/voices/true_ending3/recording_2_munshi.ogg">Doctor Munshi has gone insane!</Entry>
+        <Entry Name="lang/eng/voices/true_ending3/recording_3_giving.ogg">He started giving patients SOMA Fluid, it makes them see things.</Entry>
+        <Entry Name="lang/eng/voices/true_ending3/recording_4_now.ogg">I need help, NOW!</Entry>
+        <Entry Name="lang/eng/voices/true_ending3/munshi_didnt_smell.ogg">Oh hi. Didn&apos;t smell you come in.</Entry>
+        <Entry Name="general_7_greetdavid_001_david_001">Oh, hi! Didn&apos;t hear you come in. Simon Jarret, right?</Entry>
+        <Entry Name="general_8_interactdavid1_002_david_001">We&apos;re going to do a scan of your brain. Then we build a computer model of it and bombard it with stimuli. The program will help us to quickly iterate your treatment plan until it&apos;s fully optimized. In short, develop the perfect treatment for your condition.</Entry>
+        <Entry Name="general_10_sitdown_009_david_001">It&apos;s just a scan. It will hurt about as much as getting your picture taken.</Entry>
+        <Entry Name="general_8_interactdavid2_004_david_001">Well, we probably can&apos;t restore your brain completely, but we should be able to make those X months turn into years. Decades even. If you take care of yourself and don&apos;t do anything too crazy, we should be able to get you to outlive the best of us.</Entry>
+        <Entry Name="general_10_sitdown_003_david_001">Toronto, Canada. David Munshi.</Entry>
+        <Entry Name="general_10_sitdown_004_david_001">Born 1988, July 16?</Entry>
+        <Entry Name="general_10_sitdown_006_david_001">Flat neurograph version six.</Entry>
+    </CATEGORY>
+</LANGUAGE>

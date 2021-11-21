@@ -1,0 +1,222 @@
+<Entity>
+    <ModelData>
+        <Entities />
+        <Mesh Filename="entities/character/special_munshi/special_munshi_monster/special_munshi_monster.fbx">
+            <SubMesh ID="0" Name="body" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="10959" Material="" />
+            <SubMesh ID="1" Name="helmet" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="1436" Material="" />
+            <SubMesh ID="2" Name="mesh_mouth_lower" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="212" Material="" />
+            <SubMesh ID="3" Name="mesh_mouth_upper" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="234" Material="" />
+            <SubMesh ID="4" Name="mesh_mouth_tongue" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="66" Material="" />
+            <SubMesh ID="5" Name="mesh_eye_left" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="81" Material="" />
+            <SubMesh ID="6" Name="mesh_eye_right" CreStamp="0" ModStamp="0" WorldPos="0 0 0" Rotation="0 0 0" Scale="1 1 1" TriCount="81" Material="" />
+        </Mesh>
+        <Bones>
+            <Bone ID="7" Name="body" />
+            <Bone ID="8" Name="helmet" />
+            <Bone ID="9" Name="mesh_mouth_lower" />
+            <Bone ID="10" Name="mesh_mouth_upper" />
+            <Bone ID="11" Name="mesh_mouth_tongue" />
+            <Bone ID="12" Name="mesh_eye_left" />
+            <Bone ID="13" Name="mesh_eye_right" />
+            <Bone ID="14" Name="Bip001" />
+            <Bone ID="15" Name="Bip001Pelvis" />
+            <Bone ID="16" Name="Bip001Spine" />
+            <Bone ID="17" Name="Bip001Spine1" />
+            <Bone ID="18" Name="Bip001Spine2" />
+            <Bone ID="19" Name="Bip001Neck" />
+            <Bone ID="20" Name="Bip001Head" />
+            <Bone ID="21" Name="Bip001 HeadNub" />
+            <Bone ID="22" Name="Jaw" />
+            <Bone ID="23" Name="Chin" />
+            <Bone ID="24" Name="L_Lip_Lower" />
+            <Bone ID="25" Name="Lip_Lower" />
+            <Bone ID="26" Name="L_Cheek_Lower" />
+            <Bone ID="27" Name="R_Cheek_Lower" />
+            <Bone ID="28" Name="R_Lip_Lower" />
+            <Bone ID="29" Name="L_Mouth_Corner" />
+            <Bone ID="30" Name="Lip_Upper" />
+            <Bone ID="31" Name="L_Lip_Upper" />
+            <Bone ID="32" Name="L_Eyebrow_Inner" />
+            <Bone ID="33" Name="L_Eyebrow_Outer" />
+            <Bone ID="34" Name="L_Nose" />
+            <Bone ID="35" Name="L_Cheek_Upper" />
+            <Bone ID="36" Name="L_Eye_Expression" />
+            <Bone ID="37" Name="L_Eyelid_Upper" />
+            <Bone ID="38" Name="L_Eyelid_Lower" />
+            <Bone ID="39" Name="R_Mouth_Corner" />
+            <Bone ID="40" Name="R_Lip_Upper" />
+            <Bone ID="41" Name="R_Cheek_Upper" />
+            <Bone ID="42" Name="R_Nose" />
+            <Bone ID="43" Name="R_Eye_Expression" />
+            <Bone ID="44" Name="R_Eyebrow_Outer" />
+            <Bone ID="45" Name="R_Eyebrow_Inner" />
+            <Bone ID="46" Name="R_Eyelid_Lower" />
+            <Bone ID="47" Name="R_Eyelid_Upper" />
+            <Bone ID="48" Name="R_Eye" />
+            <Bone ID="49" Name="L_Eye" />
+            <Bone ID="50" Name="Bip001LClavicle" />
+            <Bone ID="51" Name="Bip001LUpperArm" />
+            <Bone ID="52" Name="Bip001LForearm" />
+            <Bone ID="53" Name="Bip001LHand" />
+            <Bone ID="54" Name="Bip001LFinger0" />
+            <Bone ID="55" Name="Bip001LFinger01" />
+            <Bone ID="56" Name="Bip001LFinger02" />
+            <Bone ID="57" Name="Bip001 L Finger0Nub" />
+            <Bone ID="58" Name="Bip001LFinger1" />
+            <Bone ID="59" Name="Bip001LFinger11" />
+            <Bone ID="60" Name="Bip001LFinger12" />
+            <Bone ID="61" Name="Bip001 L Finger1Nub" />
+            <Bone ID="62" Name="Bip001LFinger2" />
+            <Bone ID="63" Name="Bip001LFinger21" />
+            <Bone ID="64" Name="Bip001LFinger22" />
+            <Bone ID="65" Name="Bip001 L Finger2Nub" />
+            <Bone ID="66" Name="Bip001LFinger3" />
+            <Bone ID="67" Name="Bip001LFinger31" />
+            <Bone ID="68" Name="Bip001LFinger32" />
+            <Bone ID="69" Name="Bip001 L Finger3Nub" />
+            <Bone ID="70" Name="Bip001LFinger4" />
+            <Bone ID="71" Name="Bip001LFinger41" />
+            <Bone ID="72" Name="Bip001LFinger42" />
+            <Bone ID="73" Name="Bip001 L Finger4Nub" />
+            <Bone ID="74" Name="Bip001RClavicle" />
+            <Bone ID="75" Name="Bip001RUpperArm" />
+            <Bone ID="76" Name="Bip001RForearm" />
+            <Bone ID="77" Name="Bip001RHand">
+                <Sockets>
+                    <Socket ID="78" Name="EatPlayerCamera" CreStamp="0" ModStamp="1433344593" WorldPos="-0.74132 1.57279 0.214735" Rotation="0 0 0" Scale="1 1 1" SourceBoneName="" />
+                </Sockets>
+            </Bone>
+            <Bone ID="79" Name="Bip001RFinger0" />
+            <Bone ID="80" Name="Bip001RFinger01" />
+            <Bone ID="81" Name="Bip001RFinger02" />
+            <Bone ID="82" Name="Bip001 R Finger0Nub" />
+            <Bone ID="83" Name="Bip001RFinger1" />
+            <Bone ID="84" Name="Bip001RFinger11" />
+            <Bone ID="85" Name="Bip001RFinger12" />
+            <Bone ID="86" Name="Bip001 R Finger1Nub" />
+            <Bone ID="87" Name="Bip001RFinger2" />
+            <Bone ID="88" Name="Bip001RFinger21" />
+            <Bone ID="89" Name="Bip001RFinger22" />
+            <Bone ID="90" Name="Bip001 R Finger2Nub" />
+            <Bone ID="91" Name="Bip001RFinger3" />
+            <Bone ID="92" Name="Bip001RFinger31" />
+            <Bone ID="93" Name="Bip001RFinger32" />
+            <Bone ID="94" Name="Bip001 R Finger3Nub" />
+            <Bone ID="95" Name="Bip001RFinger4" />
+            <Bone ID="96" Name="Bip001RFinger41" />
+            <Bone ID="97" Name="Bip001RFinger42" />
+            <Bone ID="98" Name="Bip001 R Finger4Nub" />
+            <Bone ID="99" Name="Bip001RThigh" />
+            <Bone ID="100" Name="Bip001RCalf" />
+            <Bone ID="101" Name="Bip001RFoot" />
+            <Bone ID="102" Name="Bip001RToe0" />
+            <Bone ID="103" Name="Bip001 R Toe0Nub" />
+            <Bone ID="104" Name="Bip001LThigh" />
+            <Bone ID="105" Name="Bip001LCalf" />
+            <Bone ID="106" Name="Bip001LFoot" />
+            <Bone ID="107" Name="Bip001LToe0" />
+            <Bone ID="108" Name="Bip001 L Toe0Nub" />
+            <Bone ID="109" Name="body" />
+            <Bone ID="110" Name="helmet" />
+            <Bone ID="111" Name="mesh_mouth_lower" />
+            <Bone ID="112" Name="mesh_mouth_upper" />
+            <Bone ID="113" Name="mesh_mouth_tongue" />
+            <Bone ID="114" Name="mesh_eye_left" />
+            <Bone ID="115" Name="mesh_eye_right" />
+        </Bones>
+        <Shapes />
+        <Bodies />
+        <Joints />
+        <Animations>
+            <Animation Name="Visemes_17_1" File="entities/character/urban/professor/animations/visemes/AA_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_2" File="entities/character/urban/professor/animations/visemes/AH_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_3" File="entities/character/urban/professor/animations/visemes/AO_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_4" File="entities/character/urban/professor/animations/visemes/AW_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_15" File="entities/character/urban/professor/animations/visemes/CH_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_6" File="entities/character/urban/professor/animations/visemes/EH_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_10" File="entities/character/urban/professor/animations/visemes/ER_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_8" File="entities/character/urban/professor/animations/visemes/EY_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_16" File="entities/character/urban/professor/animations/visemes/F_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_7" File="entities/character/urban/professor/animations/visemes/IH_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_9" File="entities/character/urban/professor/animations/visemes/IY_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_11" File="entities/character/urban/professor/animations/visemes/L_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_13" File="entities/character/urban/professor/animations/visemes/M_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_14" File="entities/character/urban/professor/animations/visemes/N_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_5" File="entities/character/urban/professor/animations/visemes/OY_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_12" File="entities/character/urban/professor/animations/visemes/W_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="Visemes_17_17" File="entities/character/urban/professor/animations/visemes/X_Viseme.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="eats_player" File="entities/character/special_munshi/special_munshi_monster/animations/eats_player.dae_anim" Layer="Default" Speed="1" />
+            <Animation Name="hear_player" File="entities/character/special_munshi/special_munshi_monster/animations/hear_player.dae_anim" Layer="Default" Speed="1">
+                <Event Name="hear_player" Time="0" Type="PlaySound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/hear_player" />
+                <Event Name="step_F" Time="0.34" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+                <Event Name="step_B" Time="2.45" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+            </Animation>
+            <Animation Name="idle" File="entities/character/special_munshi/special_munshi_monster/animations/idle.dae_anim" Layer="Default" Speed="1">
+                <Event Name="idle" Time="0" Type="PlaySound" DestSocket="" Value="" />
+            </Animation>
+            <Animation Name="idle_extra01" File="entities/character/special_munshi/special_munshi_monster/animations/idle_extra01.dae_anim" Layer="Default" Speed="1">
+                <Event Name="idle_extra_01" Time="0" Type="PlaySound" DestSocket="" Value="" />
+            </Animation>
+            <Animation Name="idle_extra02" File="entities/character/special_munshi/special_munshi_monster/animations/idle_extra02.dae_anim" Layer="Default" Speed="1">
+                <Event Name="idle_extra_02" Time="0" Type="PlaySound" DestSocket="" Value="" />
+            </Animation>
+            <Animation Name="idle_extra03" File="entities/character/special_munshi/special_munshi_monster/animations/idle_extra03.dae_anim" Layer="Default" Speed="1">
+                <Event Name="idle_extra_03" Time="0" Type="PlaySound" DestSocket="" Value="" />
+            </Animation>
+            <Animation Name="run" File="entities/character/special_munshi/special_munshi_monster/animations/run.dae_anim" Layer="Default" Speed="0.19">
+                <Event Name="run" Time="0" Type="PlayLoopSound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/run" />
+                <Event Name="step_1" Time="0.267442" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+                <Event Name="step_2" Time="0.634219" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+                <Event Name="step_3" Time="1.10033" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+                <Event Name="step_4" Time="1.46966" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+                <Event Name="step_5" Time="1.88449" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+                <Event Name="step_6" Time="2.20321" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+                <Event Name="step_7" Time="2.61584" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+                <Event Name="step_8" Time="2.9928" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+            </Animation>
+            <Animation Name="walk" File="entities/character/special_munshi/special_munshi_monster/animations/walk.dae_anim" Layer="Default" Speed="2.7">
+                <Event Name="walk" Time="0" Type="PlayLoopSound" DestSocket="" Value="NPC_Creatures/Foley/InWorld/Deepsea_Diver/walk" />
+                <Event Name="step_R" Time="0.8" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+                <Event Name="step_L" Time="2.35" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+            </Animation>
+            <Animation Name="walk_backwards" File="entities/character/special_munshi/special_munshi_monster/animations/walk.dae_anim" Layer="Default" Speed="-2.7">
+                <Event Name="step_R" Time="0.8" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+                <Event Name="step_L" Time="2.35" Type="PlaySound" DestSocket="" Value="character_urban/Professor/Animation/step" />
+                <Event Name="walk" Time="3.7" Type="PlayLoopSound" DestSocket="" Value="" />
+            </Animation>
+        </Animations>
+        <ProcAnimations />
+    </ModelData>
+    <UserDefinedVariables EntityType="Agent_MunshiNPC">
+        <Var Name="Health" Value="100" />
+        <Var Name="Toughness" Value="0" />
+        <Var Name="EventTag" Value="" />
+        <Var Name="VoiceSourceBone" Value="" />
+        <Var Name="CastShadows" Value="true" />
+        <Var Name="EffectsOnTime" Value="1" />
+        <Var Name="EffectsOffTime" Value="1" />
+        <Var Name="CharBodySize" Value="0.8 1.8 0.8" />
+        <Var Name="MeshPositionOffset" Value="0 0 0" />
+        <Var Name="MeshRotationOffset" Value="0 0 0" />
+        <Var Name="MeshScaleOffset" Value="1 1 1" />
+        <Var Name="CharBodyPosBone" Value="Bip001Pelvis" />
+        <Var Name="CharBodyBoneIsFeet" Value="false" />
+        <Var Name="CharBodyBoneYOffset" Value="0" />
+        <Var Name="CustomScriptFile" Value="" />
+        <Var Name="CustomScriptClass" Value="" />
+        <Var Name="CharMover_IdleAnim" Value="idle" />
+        <Var Name="CharMover_WalkAnim" Value="walk" />
+        <Var Name="CharMover_RunAnim" Value="run" />
+        <Var Name="CharMover_BackwardAnim" Value="walk_backwards" />
+        <Var Name="CharMover_IdleExtraAnim" Value="idle_extra0" />
+        <Var Name="CharMover_IdleExtraMinWait" Value="4" />
+        <Var Name="CharMover_IdleExtraMaxWait" Value="10" />
+        <Var Name="CharMover_IdleExtraPauseProcedural" Value="true" />
+        <Var Name="HeadTracker_Bones" Value="Bip001Neck Bip001Head" />
+        <Var Name="HeadTracker_BoneMuls" Value="0.5 0.5" />
+        <Var Name="HeadTracker_ChestBone" Value="Bip001Spine2" />
+        <Var Name="HeadTracker_SpeedMul" Value="1" />
+        <Var Name="HeadTracker_MaxSpeed" Value="1" />
+        <Var Name="HeadTracker_MaxAngle" Value="45" />
+    </UserDefinedVariables>
+</Entity>

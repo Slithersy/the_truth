@@ -1,0 +1,19 @@
+<PreloadCache>
+    <Materials>
+        <Material DebugPos="-0.250000 : -0.000500 : -0.500000" Path="static_objects/station/floor/concrete_tiled.mat" />
+        <Material DebugPos="Script" Path="damage_steam_screen.mat" />
+        <Material DebugPos="Script" Path="d:/svn/depth/redist/textures/technical/advanced_black.mat" />
+        <Material DebugPos="Script" Path="entities/station/tech/computer_panels/computer_panels.mat" />
+        <Material DebugPos="Script" Path="entities/station/tech/computer_panels/computer_panels_large_gui.mat" />
+        <Material DebugPos="Script" Path="entities/character/player/hands/hands_human_shirt.mat" />
+        <Material DebugPos="Script" Path="entities/character/player/hands/hands_human_skin.mat" />
+    </Materials>
+    <EntFiles>
+        <EntFile DebugPos="Script" Path="death_terminal.ent" />
+        <EntFile DebugPos="Script" Path="character/player/hands/hands_human.ent" />
+    </EntFiles>
+    <ParticleSystems>
+        <ParticleSystem DebugPos="Script" Path="underwater_footstep_sand_oneshot.ps" />
+    </ParticleSystems>
+    <AINodes />
+</PreloadCache>

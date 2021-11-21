@@ -1,0 +1,10 @@
+<HPLMapTrack_LightMask ID="79862EC950BA19CE2754E5172B791515F2A75DD3" Version="1.00">
+    <Section Name="Potato@POTATO">
+        <Objects>
+            <LightMaskBox ID="268472189" Name="LightMaskBox_1_(Conflict1)" CreStamp="1421683289" ModStamp="1605305435" WorldPos="42.1779 2.25 34.3428" Rotation="0 1.5708 0" Scale="1 1 1" Size="8 6 8.25" UID="16 1229 268472189" />
+            <LightMaskBox ID="268474942" Name="LightMaskBox_3" CreStamp="1417176444" ModStamp="1605704519" WorldPos="160.126 4.25 112.982" Rotation="0 0 0" Scale="1 1 1" Size="12.25 1.5 1.5" UID="16 6714 268474942" />
+            <LightMaskBox ID="268475031" Name="LightMaskBox_2" CreStamp="1416842074" ModStamp="1605704519" WorldPos="162.67 2.88259 120.714" Rotation="0 0 0" Scale="1 1 1" Size="10 7.45834 10.6105" UID="16 7277 268475031" />
+            <LightMaskBox ID="268475271" Name="LightMaskBox_1" CreStamp="1411487796" ModStamp="1605704519" WorldPos="165.126 1.39692 123.232" Rotation="0 0 0" Scale="1 1 1" Size="5.25 3.5 5.75" UID="16 9103 268475271" />
+        </Objects>
+    </Section>
+</HPLMapTrack_LightMask>

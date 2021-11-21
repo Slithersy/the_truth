@@ -1,0 +1,1332 @@
+#include "interfaces/Map_Interface.hps"
+#include "base/Inputhandler_Types.hps"
+
+#include "helpers/helper_map.hps"
+#include "helpers/helper_props.hps"
+#include "helpers/helper_effects.hps"
+#include "helpers/helper_audio.hps"
+#include "helpers/helper_imgui.hps"
+#include "helpers/helper_sequences.hps"
+#include "helpers/helper_game.hps"
+#include "helpers/helper_modules.hps"
+#include "helpers/helper_ai.hps"
+#include "helpers/helper_player.hps"
+#include "helpers/helper_areas.hps"
+
+#include "helper_imgui_urban.hps"
+
+//--------------------------------------------------
+ 
+/*Place any global values here. These must be const variables as they will not be saved*/
+/*This is also the place for enums and classes, but these should be avoided whenever possible*/
+ 
+//--------------------------------------------------
+ 
+class cScrMap : iScrMap
+{
+	//--------------------------------------------
+ 
+	//////////////////////////////////////////////////////////////////////////////////////////
+	// ==============
+	// MAIN CALLBACKS
+	// ==============
+	//{///////////////////////////////////////////////////////////////////////////////////////
+ 
+	//-------------------------------------------------------
+ 
+	////////////////////////////
+	// Set up map environment
+	void Setup()
+	{
+	}
+	
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// Run first time starting map
+	void OnStart()
+	{
+        Music_Play("01_04_enteringstation", 0.6, false, eMusicPrio_BigEvent);
+        Player_SetMoveSpeedMul(1.0f);
+        
+        StickyArea_AttachEntity("StickyArea_6", "PowerCable_Level1_2", "Body_11");
+		
+		NPC_SetMainAnimation("Level2_David", "server_idle", true,"",0.0f);
+		NPC_SetMainAnimation("Level3_David", "server_idle", true,"",0.0f);
+		SlideDoor_SetClosed("Level2_DoorOut", true, false);
+		
+		ParticleSystem_Preload("toilet_sink_stream.ps");
+		ParticleSystem_Preload("oneshot_waterbubbles_small_vertical.ps");
+		ParticleSystem_Preload("01_01_break_window_damaged.ps");
+		Sound_PreloadGroup("Entities_Urban/utility/water_cooler", true);
+		Sound_PreloadGroup("Entities_Urban/lamp/generic_INT", true);
+		Sound_PreloadGroup("level_amb_shared_machines/misc/door/sliding_door_metal", true);
+		Sound_PreloadGroup("01_01_upsilon_awake/sfx/window_smash", true);
+		Sound_PreloadGroup("01_02_upsilon_inside_02/sfx/catwalk_collapse", true);
+		Sound_PreloadGroup("special_fx/transitions", true);
+		Sound_PreloadGroup("Entities_Urban/tech/keypad", true);
+		Sound_PreloadGroup("Flashback/Level/01_01", true);
+		Map_Preload("main_menu.hpm");
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// Run when entering map
+	void OnEnter()
+	{	
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// Run when leaving map
+	void OnLeave()
+	{
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// The player has died.
+	void OnPlayerKilled(int alRecentDeaths, const tString&in asSource)
+	{
+	}
+
+	//-------------------------------------------------------
+
+	bool mbEscSkipsCredits = false;
+	
+	////////////////////////////
+	// To get when player makes input (mostly used for debug)
+	void OnAction(int alAction, bool abPressed) 
+	{
+		if(abPressed==false) return;
+		
+		//////////////////////////////////////////////////////////
+		// Important! Don't remove
+		if (mbEscSkipsCredits)
+		{
+			if (alAction == eAction_OpenMenu)
+			{
+				// Skip the credits
+				SequenceStates_Resume("PowerOnSequence");
+			}
+		}
+		
+		if(alAction == eAction_Test1)
+		{
+		}
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// This only used for pure debug purposes when info needs to printed.
+	float DrawDebugOutput(cGuiSet @apSet,iFontData @apFont,float afY)
+	{
+		//afY = cLux_DrawDebugText("My Debug value:"+..., afY);
+		return afY;
+	}
+ 
+	//-------------------------------------------------------
+ 
+	//} END MAIN CALLBACKS
+ 
+ 
+	//////////////////////////////////////////////////////////////////////////////////////////
+	// ==============
+	// MAIN FUNCTIONS
+	// ==============
+	//{///////////////////////////////////////////////////////////////////////////////////////
+ 
+	//-------------------------------------------------------
+ 
+	/*Put any variables that are used in more than one scene here.*/
+ 
+	//-------------------------------------------------------
+ 
+	/*Put any functions that are used in more than one scene here.*/
+ 
+	//-------------------------------------------------------
+ 
+	//} END MAIN FUNCTIONS
+ 
+	//////////////////////////////////////////////////////////////////////////////////////////
+	// ==============
+	// SCENE X *NAME OF SCENE*
+	// ==============
+	//{//////////////////////////////////////////////////////////////////////////////////////
+ 
+		 /////////////////////////////////////////
+		 // General
+		 //{//////////////////////////////////////
+		 
+		//-------------------------------------------------------
+	 
+		/*Put any variables that are used by many events in Scene X here.*/
+	 
+		//-------------------------------------------------------
+	 
+		/*Put any functions that are used in more than one event in Scene X here.*/
+	 
+		//-------------------------------------------------------
+		
+		//} END General	
+	 
+		 /////////////////////////////////////////
+		 // Event *Name Of Event*
+		 //{//////////////////////////////////////
+	 
+		 //-------------------------------------------------------
+	 
+		 /*Put any variables that are only used in Scene X, Event X here.*/
+	 
+		 //-------------------------------------------------------
+	 
+		 /*Put any functionsthat are only used in Scene X, Event X here.*/
+	 
+		 //-------------------------------------------------------
+	 
+		 //} END Event *Name Of Event*
+	 
+	 //} END SCENE X
+ 
+ 
+	 /////////////////////////////////////////
+	 // ==============
+	 // TERMINALS
+	 // ==============
+	 //{//////////////////////////////////////
+ 
+		 //-------------------------------------------------------
+	 
+		 /////////////////////////////////////////
+		 // Terminal *Name Of Terminal*
+		 //{//////////////////////////////////////
+	 
+		 //-------------------------------------------------------
+	 
+		 /*Put any variables that are only used Terminal here.*/
+	 
+		 //-------------------------------------------------------
+	 
+		 /*Put any functions that are only used Terminal here.*/
+	 
+		 //-------------------------------------------------------
+	 
+		 //} END Terminal *Name Of Terminal*
+	
+	//} END TERMINALS
+    
+    
+    //{ Custom Code :
+    
+        //{ Use Watercooler :
+        
+        void UseWaterCoolerHot(const tString &in asEntity)
+        {
+            ///////////////////////////////
+            // Turn on hot tap
+            Map_RemoveTimer("enableinteractioncooler");
+            Entity_SetActive("TriggerArea_Water_Hot",false);
+            Entity_SetActive("TriggerArea_Water_Cold",false);
+            Map_AddTimer("stop_cold",1.5f,"Timer_StopHotWater");
+            Map_AddTimer("enableinteractioncooler",2.5f,"Timer_EnableWater");
+            ParticleSystem_CreateAtEntity("Particles_TapStream_Hot","toilet_sink_stream.ps","WaterCooler_Hot_Effect",false);
+            
+            Sound_CreateAtEntity("UseWatercooler", "Entities_Urban/utility/water_cooler/button_press", asEntity, 0.0f, false, 1.0f);
+        }
+        
+        //-------------------------------------------------------
+        
+        void UseWaterCoolerCold(const tString &in asEntity)
+        {
+            ///////////////////////////////
+            // Turn on cold tap
+            Map_RemoveTimer("enableinteractioncooler");
+            Entity_SetActive("TriggerArea_Water_Hot",false);
+            Entity_SetActive("TriggerArea_Water_Cold",false);
+            Map_AddTimer("stop_cold",1.5f,"Timer_StopColdWater");
+            Map_AddTimer("enableinteractioncooler",2.5f,"Timer_EnableWater");
+            ParticleSystem_CreateAtEntity("Particles_TapStream_Cold","toilet_sink_stream.ps","WaterCooler_Cold_Effect",false);
+            
+            Sound_CreateAtEntity("UseWatercooler", "Entities_Urban/utility/water_cooler/button_press", asEntity, 0.0f, false, 1.0f);
+        }
+        //-------------------------------------------------------
+        void Timer_StopColdWater(const tString &in  asTimer)
+        {
+            ///////////////////////////////
+            // Turn off cold tap
+            ParticleSystem_Destroy("Particles_TapStream_Cold");
+            
+            ParticleSystem_CreateAtEntity("Particles_Bubbles","oneshot_waterbubbles_small_vertical.ps","Bubble_Effect",false);
+        }
+        //-------------------------------------------------------
+        void Timer_StopHotWater(const tString &in asTimer)
+        {
+            ///////////////////////////////
+            // Turn off hot tap
+            ParticleSystem_Destroy("Particles_TapStream_Hot");
+            ParticleSystem_Destroy("Particles_Bubbles");
+            ParticleSystem_CreateAtEntity("Particles_Bubbles","oneshot_waterbubbles_small_vertical.ps","Bubble_Effect",false);
+        }
+        
+        void Timer_EnableWater(const tString &in asTimer)
+        {
+            Entity_SetActive("TriggerArea_Water_Hot",true);
+            Entity_SetActive("TriggerArea_Water_Cold",true);
+        }
+        
+        //-------------------------------------------------------
+        
+        bool OnTriggerHoleInCeiling(const tString &in asParent, const tString &in asChild, int alState)
+        {
+            cLux_DropPageFocus("dynamic_range");
+            
+            return false;
+        }
+        
+        //} Use Watercooler End
+    
+    
+        //{ Very Start :
+        
+            void StartMusicHall(const tString &in asName)
+            {
+                Music_Play("00_00_hallway", 0.2, false, eMusicPrio_BigEvent);
+            }
+        
+            bool Trigger_Start_OpenDoor(const tString &in asParent, const tString &in asChild, int alState)
+            {
+                SwingDoor_PushOpen("SwingDoor_Start", 20, 1, 0.2);
+                Music_Play("00_00_locked", 0.8, false, eMusicPrio_BigEvent);
+                Map_AddTimer("Timer_StartMusicHall", 3, "StartMusicHall");
+				CheckPoint_Setup("");
+                
+                return false;
+            }
+        //} Very Start End
+        
+        //{ Puzzle 1 :
+        
+            void Light_Level1_Interact(const tString &in asEntity, int alState)
+            {
+                Sound_CreateAtEntity("TurnedOnLight_Level1", "Entities_Urban/lamp/generic_INT/switch_plastic_on_off", "light_switch_1");
+                
+                if (alState==1)
+                {
+                    Sound_Play("LightSound_Level1_*", 0.25f, false);
+                }
+                else
+                {
+                    Sound_Stop("LightSound_Level1_*", 0.1f);
+                }
+            }
+            
+            //This is really ugly... I know.. but there's nothing else I know of that I could do instead ):
+            
+            bool FoundNoteBook = false;
+            
+            void ReceptionLaptopGUI(const tString&in asEntityName, float afTimeStep)
+            {
+                UrbanGui_PACE_DrawBackdrop(1.0f);
+                UrbanGui_PACE_DrawDesktopIcons(2.0f);
+                
+                ImGui_SetTransCategory("custom_munshi_mod");
+                
+                Depth_ImGui_AddMail("GUI_EMAIL_1", "EMAIL_1_BODY", "EMAIL_1_FROM", "EMAIL_1_DATE", eMailAppEntryType_Inbox);
+                Depth_ImGui_AddMail("GUI_EMAIL_2", "EMAIL_2_BODY", "EMAIL_2_FROM", "EMAIL_2_DATE", eMailAppEntryType_Inbox);
+                Depth_ImGui_AddMail("GUI_EMAIL_3", "EMAIL_3_BODY", "EMAIL_3_FROM", "EMAIL_3_DATE", eMailAppEntryType_Sent);
+                UrbanGui_MailApp("GUIMailAPaul");
+            }
+            
+            void OnReadHint(const tString &in asEntity)
+            {
+                if (!FoundNoteBook) 
+                {
+                    Sound_CreateAtEntity( "Book Found", "music/00_00/00_00_locked.ogg", "player");
+                    Voice_Play("Intro_Munshi", 0);
+                    FoundNoteBook = true;
+                }
+            }
+            
+            
+            int PlugAttached1 = 2;
+            int PlugAttached2 = 0;
+            int PlugAttached3 = 0;
+            int PlugAttached4 = 0;
+            
+            void CheckPassword()
+            {
+                if(PlugAttached1==2 and PlugAttached2==3 and PlugAttached3==1 and PlugAttached4==4)
+                {
+                    if (!FoundNoteBook)
+                    {
+                        Voice_Play("Intro_Munshi", 1);
+                    }
+                    
+                    Sound_CreateAtEntity("Music_PlayCompletePuzzle", "music/01_01/01_01_omnitoolpickup.ogg", "player");
+                    mBaseObj.GetEntityByName("SwingDoor_Start_1_Light", eLuxEntityType_Prop, "").GetMeshEntity().SetIlluminationColor(cColor(0, 1, 0)); //Green
+                    
+                    Sound_CreateAtEntity("SFX_DoorUnlockSound", "level_amb_shared_machines/misc/door/sliding_door_metal/sliding_door_metal_open", "SwingDoor_Start_2");
+                    SwingDoor_SetLocked("SwingDoor_Start_2", false, true);
+                    
+                    mBaseObj.GetEntityByName("SwingDoor_Start_2_Light", eLuxEntityType_Prop, "").GetMeshEntity().SetIlluminationColor(cColor(0, 1, 0.93)); //Blue
+                    
+                    Entity_SetInteractionDisabled("PowerCable_Level1_*",  true);
+                    //Prop_SetStaticPhysics("PowerCable_Level1_*", true);
+					Entity_SetCollide("PowerCable_Level1_*", false);
+					Entity_SetCollideCharacter("PowerCable_Level1_*", false);
+                };
+                
+                cLux_AddDebugMessage("" + PlugAttached1);
+                cLux_AddDebugMessage("" + PlugAttached2);
+                cLux_AddDebugMessage("" + PlugAttached3);
+                cLux_AddDebugMessage("" + PlugAttached4);
+            }
+            
+            //{ Detachables :
+            
+                void StickyArea_1_Detach(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    PlugAttached1 = 0;
+                }
+                
+                void StickyArea_2_Detach(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    PlugAttached2 = 0;
+                }
+                
+                void StickyArea_3_Detach(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    PlugAttached3 = 0;
+                }
+                
+                void StickyArea_4_Detach(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    PlugAttached4 = 0;
+                }
+            
+            //} Detachables End
+            
+            //{ Sticky1 :
+                bool StickyArea_1_Attach(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached1!=0) return false;
+                    PlugAttached1 = 1;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                bool StickyArea_1_Attach_2(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached1!=0) return false;
+                    PlugAttached1 = 2;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                bool StickyArea_1_Attach_3(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached1!=0) return false;
+                    PlugAttached1 = 3;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                
+                bool StickyArea_1_Attach_4(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached1!=0) return false;
+                    PlugAttached1 = 4;
+                    CheckPassword();
+                    
+                    return true;
+                }
+            //} Sticky1 End
+            
+            //{ Sticky2 :
+                bool StickyArea_2_Attach(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached2!=0) return false;
+                    PlugAttached2 = 1;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                bool StickyArea_2_Attach_2(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached2!=0) return false;
+                    PlugAttached2 = 2;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                bool StickyArea_2_Attach_3(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached2!=0) return false;
+                    PlugAttached2 = 3;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                bool StickyArea_2_Attach_4(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached2!=0) return false;
+                    PlugAttached2 = 4;
+                    CheckPassword();
+                    
+                    return true;
+                }
+            //} Sticky2 End
+            
+            //{ Sticky3 :
+                bool StickyArea_3_Attach(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached3!=0) return false;
+                    PlugAttached3 = 1;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                bool StickyArea_3_Attach_2(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached3!=0) return false;
+                    PlugAttached3 = 2;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                bool StickyArea_3_Attach_3(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached3!=0) return false;
+                    PlugAttached3 = 3;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                bool StickyArea_3_Attach_4(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached3!=0) return false;
+                    PlugAttached3 = 4;
+                    CheckPassword();
+                    
+                    return true;
+                }
+            //} Sticky3 End
+            
+            //{ Sticky4 :
+                bool StickyArea_4_Attach(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached4!=0) return false;
+                    PlugAttached4 = 1;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                bool StickyArea_4_Attach_2(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached4!=0) return false;
+                    PlugAttached4 = 2;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                bool StickyArea_4_Attach_3(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached4!=0) return false;
+                    PlugAttached4 = 3;
+                    CheckPassword();
+                    
+                    return true;
+                }
+                
+                bool StickyArea_4_Attach_4(const tString &in asStickyArea, const tString &in asBodyName)
+                {
+                    if (PlugAttached4!=0) return false;
+                    PlugAttached4 = 4;
+                    CheckPassword();
+                    
+                    return true;
+                }
+            //} Sticky4 End
+        
+        //} Puzzle 1 End
+   
+        //{ Puzzle 2 :
+        
+            //{ Intercom :
+                bool mbDatamineCompleteMusicTriggered = false;
+                void DatamineCompleteMusic(const tString &in asEntity)
+                {
+                    if(mbDatamineCompleteMusicTriggered == false)
+                    {
+                        Music_Stop(5.0f, eMusicPrio_MinorEvent);
+                        Music_Play("01_01_awaken", 0.45f, false, eMusicPrio_BigEvent);
+                        
+                        mbDatamineCompleteMusicTriggered = true;
+                        
+                    }
+                }
+            //}
+        
+        void TimerSwapWindow(const tString& in asName)
+        {
+            Entity_SetActive(asName,true);
+            Entity_SetActive("tech_room_window_nobreak",false);
+        }
+        
+        int mlWindowBreaks = 0;
+        
+        void OnBreakWindow(const tString &in asEntity)
+        {
+            ++mlWindowBreaks;
+
+            if (mlWindowBreaks == 1)
+            {
+                Entity_SetActive("tech_room_window_1",false);
+                Entity_SetActive("tech_room_window_nobreak",true);
+                ParticleSystem_CreateAtEntity("01_01_break_window_damaged","01_01_break_window_damaged.ps","WindowCrackEffectArea",false);
+                Sound_CreateAtEntity("WindowCrack", "01_01_upsilon_awake/sfx/window_smash/glass_crack", "WindowSoundSource");
+                Map_AddTimer("tech_room_window_2",0.75f,"TimerSwapWindow");
+            }
+
+            if (mlWindowBreaks == 2)
+            {
+                Entity_SetActive("tech_room_window_2",false);
+                Entity_SetActive("tech_room_window_3",true);
+                ParticleSystem_CreateAtEntity("01_01_break_window","01_01_break_window.ps","WindowCrackEffectArea",false);
+                Sound_CreateAtEntity("WindowCrack", "01_01_upsilon_awake/sfx/window_smash/glass_smash", "WindowSoundSource");
+            }
+        }
+            
+		bool mbPowerRoomCollapseMusic = false;
+        bool mbLadderCollapsed = false;
+        
+		bool OnTriggerLadderCollapse(const tString &in asParent, const tString &in asChild, int alState)
+		{
+			if(mbLadderCollapsed) return false;
+			
+			if(Player_GetCurrentStateName()!="State_Ladder")
+			{
+				return true;	
+			}
+			
+			cLux_AddDebugMessage("Collide with :"+asChild);
+			
+			Player_ChangeStateToNormal();
+			
+			Prop_SetStaticPhysics("01_02_ladder_collapse_1", false);
+			Entity_SetActive("block_box_ladder", false);
+			Entity_SetInteractionDisabled("LadderArea_1", true);
+			//Entity_SetActive("LadderArea_1", false);
+			Entity_SetActive("LadderCollapse_PlayerHitFloor", true);
+						
+			Effect_Shake_Start(0.15, 0.3, 0.1, 0.7);
+			Effect_Rumble_Start(0.7, 0.3);
+						
+			Seq_FallDownLadder("");
+			
+			cLux_AddTodoMessage("Sound: Ladder collapses");
+			
+			mbLadderCollapsed = true;
+						
+			return false;
+		}
+		
+		cSequenceStatesData mSeqFallDownLadder;
+		void Seq_FallDownLadder(const tString &in asX)
+		{
+			Sequence_Begin("Seq_FallDownLadder", mSeqFallDownLadder);
+			
+			if (Sequence_DoStepAndWait(0.1))
+			{
+				Sound_CreateAtEntity("LadderCollapse", "01_02_upsilon_inside_02/sfx/catwalk_collapse/ladder_collapse", "Player");
+				Entity_AddImpulse("01_02_ladder_collapse_1", cVector3f(-0.5,0,-2), false, false);
+				Player_AddBodyForce(cVector3f(0,0,-250*70), false);
+			}
+			else if (Sequence_DoStepAndWait(0.3))
+			{
+				Player_StartLookAt("LadderCollapse_Up",1,1,1);
+				Player_FadeLookSpeedMulTo(0.3,0.1);
+				Depth_Audio_Fear_MediumIntensity();
+				
+				Sound_FadeGlobalVolume(0.25f, 0.15f);
+				Map_AddTimer("LadderFadeUp", 2.0f, "LadderFadeUp");
+			}
+			else if (Sequence_DoStepAndPause())
+			{
+				//Wait for player to hit floor
+			}
+			else if (Sequence_DoStepAndWait(2.5))
+			{
+				if(mbPowerRoomCollapseMusic==false)
+				{
+					Music_PlayExt("01_02_catwalk_collapse", false, 0.95, 1, 3, 0, eMusicPrio_BigEvent, true);
+					
+					mbPowerRoomCollapseMusic = true;
+				}
+				
+				Player_StartLookAt("LadderCollapse_LookUp",0.5,0.75,1);
+				
+				Player_SetMoveSpeedMul(0);
+				
+				Player_SetCrouching(true);
+				Player_SetCrouchDisabled(true);
+			
+				Player_MoveHeadPos(cVector3f(0,-0.95, 1.26), 2,3,0.01f);
+				
+				Effect_Rumble_Start(0.75, 0.5);
+				
+				Sound_CreateAIEventAtEntity("Player", 20, 2);
+			}
+			else if (Sequence_DoStepAndWait(0.3))
+			{
+				Player_MoveHeadPos(cVector3f(0,0, 0), 0.5,0.2,0.2f);	
+			}
+			else if (Sequence_DoStepAndWait(0.8))
+			{
+				Player_StopLookAt(2);
+				Player_FadeLookSpeedMulTo(1,2);
+			}
+			else if (Sequence_DoStepAndWait(0.8))
+			{
+				Player_FadeMoveSpeedMulTo(1, 1);
+				Player_SetCrouchDisabled(false);
+				Player_SetCrouching(false);
+			}
+			
+			Sequence_End();
+		}
+		
+		void LadderFadeUp(const tString &in asTimer)
+		{
+			Sound_FadeGlobalVolume(1.0f, 5.0f);
+		}
+		
+		bool OnTrigger_LadderCollapse_PlayerHitFloor(const tString &in asParent, const tString &in asChild, int alState)
+		{
+			if (mbLadderCollapsed == true)
+			{
+				cLux_AddDebugMessage("HIT FLOOR!");
+				
+				SequenceStates_Resume("Seq_FallDownLadder");
+				
+				cLux_AddTodoMessage("Sound: player hits floor after ladder collpase.");
+			}
+			
+			return true;
+		}
+		
+		bool DoesMunshiLook = true;
+		
+			//{ NPC:
+				bool Munshi_Trigger_Enable_OnPlayerInteract(const tString &in asParent, const tString &in asChild, int alState)
+				{
+					Entity_SetActive("deepsea_diver_monster_1",true);
+					Entity_SetActive("Level2_David", false);
+					DoesMunshiLook = false;
+					
+					return false;
+				}
+				
+				void Munshi_Sniff_Damage(const tString&in asEntityName)
+				{
+					Voice_Play("Munshi_Voicelines_Enemy", 0);
+				}
+			//} NPC End
+		
+		void Level2_DoorOut_Look(const tString &in asEntity, int alState)
+		{
+			if (DoesMunshiLook == true)
+			{
+				cLux_AddDebugMessage("Munshi: Oh shit... Bye!");
+				NPC_SetMainAnimation("Level2_David", "talk_idle", true, "", 0.3f);
+				
+				Map_AddTimer("Level2_MunshiDelete",3.5f,"Level2_MunshiDeleteFunc");
+			};
+		}
+		
+        void Level2_MunshiDeleteFunc(const tString &in asTimer)
+        {
+			Entity_SetActive("Level2_David", false);
+        }
+		
+		
+			//{ LEVERS:
+			
+				bool AllLeversOn = false;
+				bool FirstAllGreen = false;
+				
+				void CheckIfAllGreen()
+				{
+					cLux_AddDebugMessage("Checking");
+					
+					if (Lever_GetState("Level2_Lever_1") == 1) //If all buttons are green
+					if (Lever_GetState("Level2_Lever_2") == 1)
+					if (Lever_GetState("Level2_Lever_3") == 1)
+					if (Lever_GetState("Level2_Lever_4") == 1)
+					{
+						cLux_AddDebugMessage("all on");
+						AllLeversOn = true;
+						Sound_CreateAtEntity("AllLeversGreen_Sound", "level_amb_shared_machines/misc/door/sliding_door_metal/sliding_door_metal_open", "Player", 0.0f, false, 1.0f);
+						Button_SetLocked("Level2_DoorOut_Button1", false, true);
+						
+						if (FirstAllGreen == false)
+						{
+							Sound_CreateAtEntity("AllLeversGreen_Sound_First", "special_fx/transitions/abyss_lookat", "Player", 0.0f, false, 1.0f);
+							Sound_CreateAtEntity("Music_PlayCompletePuzzle", "music/01_01/01_01_omnitoolpickup.ogg", "Player");
+							Sound_CreateAtEntity("SFX_DoorUnlockSound", "level_amb_shared_machines/misc/door/sliding_door_metal/sliding_door_metal_open", "SwingDoor_Start_4");
+							mBaseObj.GetEntityByName("SwingDoor_Start_2_Light", eLuxEntityType_Prop, "").GetMeshEntity().SetIlluminationColor(cColor(0, 1, 0)); //Green
+							SwingDoor_SetLocked("SwingDoor_Start_4", false, true);
+							mBaseObj.GetEntityByName("SwingDoor_Start_3_Light", eLuxEntityType_Prop, "").GetMeshEntity().SetIlluminationColor(cColor(0, 1, 0.93)); //Blue
+							FirstAllGreen = true;
+						};
+					};
+				}
+		
+				void Level2_Lever_Connection(const tString &in asEntity, int alState)
+				{
+					if (alState == 1)
+					{
+						mBaseObj.GetEntityByName("Light_" + asEntity, eLuxEntityType_Prop, "").GetMeshEntity().SetIlluminationColor(cColor(0, 1, 0)); //Green
+						CheckIfAllGreen();
+					}
+					else
+					{
+						mBaseObj.GetEntityByName("Light_" + asEntity, eLuxEntityType_Prop, "").GetMeshEntity().SetIlluminationColor(cColor(1, 0, 0)); //Red
+						
+						if (AllLeversOn == true) //If you turn off one of the buttons after it's been on
+						{
+							Sound_CreateAtEntity("RemoveAllLeversGreen_Sound", "level_amb_shared_machines/misc/door/sliding_door_metal/sliding_door_metal_close", "Player", 0.0f, false, 1.0f);
+							AllLeversOn = false;
+							Button_SetLocked("Level2_DoorOut_Button1", true, true);
+							SlideDoor_SetClosed("Level2_DoorOut", true, false);
+						};
+					};
+				}
+			//} LEVERS End
+
+		bool HealPlayerArea(const tString &in asParent, const tString &in asChild, int alState)
+		{
+			Player_SetHealth(1.0f);
+			return true;
+		}
+		
+		bool RemoveNPCMunshi(const tString &in asParent, const tString &in asChild, int alState)
+		{
+			if (FirstAllGreen==true)
+			{
+				Entity_SetActive("deepsea_diver_monster_1", false);
+				SlideDoor_SetClosed("Level2_DoorOut", true, false);
+				SwingDoor_SetClosed("SwingDoor_Start_2", true, false);
+				SwingDoor_SetLocked("SwingDoor_Start_2", true, false);
+				
+				return false;
+			}
+			
+			return true;
+		}
+        //} Puzzle 2 End
+		
+		//{ PUZZLE 3:
+		bool Level2_Checkpoint(const tString &in asParent, const tString &in asChild, int alState)
+		{
+			CheckPoint_Setup("");
+			return false;
+		}
+
+		bool Level3_PlayerEnter(const tString &in asParent, const tString &in asChild, int alState)
+		{
+			Music_Play("00_00_apartment", 0.2, false, eMusicPrio_BigEvent);
+			return false;
+		}
+		
+		//-------------------------------------------------------
+		
+		/////////////////////////////////////////////////////////
+		// TERMINAL KEYPAD
+		/////////////////////////////////////////////////////////
+		
+		//-------------------------------------------------------
+		
+		bool mbUsingKeypad = false;
+		tString msPadCode = "";
+		float mfKeypadPulse = 0;
+		tString gsKeypadCode = "2501";
+		
+		void security_keypad_1_OnGui(const tString&in asEntityName, float afTimeStep)
+		{
+			////////////////////////
+			// Buttons are transparent
+			cImGuiButtonData button;
+			button.mvDefaultSize = cVector2f(10,10);
+			button.mColorBase = cColor(0.3,0.3,0.3,0);
+			button.mbUseInFocusGfx = mbUsingKeypad;
+			button.mGfxInFocus.SetFile("urban/keypad/keypad_Selected");
+		
+			
+			////////////////////////
+			// Position buttonspath
+			bool bNumPad1 = ImGui_DoButtonExt("ButtonKeypad1","",button, ImGui_NrmPosGroup(cVector3f(0.27, 0.33, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			bool bNumPad2 = ImGui_DoButtonExt("ButtonKeypad2","",button, ImGui_NrmPosGroup(cVector3f(0.38, 0.33, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			bool bNumPad3 = ImGui_DoButtonExt("ButtonKeypad3","",button, ImGui_NrmPosGroup(cVector3f(0.48, 0.33, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			bool bNumPad4 = ImGui_DoButtonExt("ButtonKeypad4","",button, ImGui_NrmPosGroup(cVector3f(0.27, 0.43, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			bool bNumPad5 = ImGui_DoButtonExt("ButtonKeypad5","",button, ImGui_NrmPosGroup(cVector3f(0.38, 0.43, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			bool bNumPad6 = ImGui_DoButtonExt("ButtonKeypad6","",button, ImGui_NrmPosGroup(cVector3f(0.48, 0.43, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			bool bNumPad7 = ImGui_DoButtonExt("ButtonKeypad7","",button, ImGui_NrmPosGroup(cVector3f(0.27, 0.53, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			bool bNumPad8 = ImGui_DoButtonExt("ButtonKeypad8","",button, ImGui_NrmPosGroup(cVector3f(0.38, 0.53, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			bool bNumPad9 = ImGui_DoButtonExt("ButtonKeypad9","",button, ImGui_NrmPosGroup(cVector3f(0.48, 0.53, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			bool bNumPadAst = ImGui_DoButtonExt("ButtonKeypadA","",button, ImGui_NrmPosGroup(cVector3f(0.27, 0.63, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			bool bNumPad0 = ImGui_DoButtonExt("ButtonKeypad0","",button, ImGui_NrmPosGroup(cVector3f(0.38, 0.63, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			bool bNumPadHash = ImGui_DoButtonExt("ButtonKeypadH","",button, ImGui_NrmPosGroup(cVector3f(0.48, 0.63, 0)), ImGui_NrmSizeGroup(cVector2f(0.07, 0.07)));
+			
+			////////////////////////
+			// Enter key code
+			if (bNumPad1) 	{ Keypad_EnterDigit("1"); }
+			if (bNumPad2) 	{ Keypad_EnterDigit("2"); }
+			if (bNumPad3) 	{ Keypad_EnterDigit("3"); }
+			if (bNumPad4) 	{ Keypad_EnterDigit("4"); }
+			if (bNumPad5) 	{ Keypad_EnterDigit("5"); }
+			if (bNumPad6) 	{ Keypad_EnterDigit("6"); }
+			if (bNumPad7) 	{ Keypad_EnterDigit("7"); }
+			if (bNumPad8) 	{ Keypad_EnterDigit("8"); }
+			if (bNumPad9) 	{ Keypad_EnterDigit("9"); }
+			if (bNumPad0) 	{ Keypad_EnterDigit("0"); }
+			if (bNumPadAst)	{ Keypad_EnterDigit("*"); }
+			if (bNumPadHash){ Keypad_EnterDigit("#"); }
+			
+		}
+		
+		//-------------------------------------------------------
+		
+		void security_keypad_1_GuiEnter(const tString&in asEntityName)
+		{
+			cLux_AddDebugMessage("Entered keypad GUI");
+			msPadCode = "";
+			mbUsingKeypad = true;
+		}
+		
+		//-------------------------------------------------------
+		
+		void security_keypad_1_GuiLeave(const tString&in asEntityName)
+		{
+			cLux_AddDebugMessage("Left keypad GUI");
+			msPadCode = "";
+			mbUsingKeypad = false;
+		}
+		
+		//-------------------------------------------------------
+		
+		void SetKeypadMaterial(const tString &in asEntity, const tString &in asMaterial)
+		{
+			iLuxEntity@ pEntity = cLux_GetCurrentMap().GetEntityByName(asEntity, eLuxEntityType_LastEnum, "");
+			cMaterial@ pMaterial = cResources_CreateMaterial(asMaterial);
+
+			pEntity.GetMeshEntity().GetSubMeshEntity(1).SetCustomMaterial(pMaterial, false);
+		}
+		
+		//-------------------------------------------------------
+		
+		void Keypad_EnterDigit(tString asDigit)
+		{
+			
+			///////////////////////
+			// Append digit to code
+			msPadCode = msPadCode + asDigit; 
+			if (msPadCode != cString_Sub(gsKeypadCode, 0, msPadCode.length()))
+			{
+				tString sFirstCodeChar = cString_Sub(gsKeypadCode, 0, 1);
+				if (asDigit==sFirstCodeChar)
+					msPadCode = asDigit;
+				else
+					msPadCode = "";
+			}
+			
+			///////////////////////
+			// Keypad sound
+			Sound_CreateAtEntity("EnterDigit","Entities_Urban/tech/keypad/keypad_press_01","security_keypad_1",0.0,false);
+
+			//////////////////////
+			// Check complete code
+			if (msPadCode.length() < gsKeypadCode.length())
+			{
+				cLux_AddDebugMessage("check");
+				Entity_SetEffectsActive(ImGui_GetName(), false, false);
+				Map_AddTimer(ImGui_GetName(), 0.1, "Timer_KeypadEffectsOn");
+				Light_FadeTo("Keypad_PointLight_1",0,0.1,0);
+				return;
+			}
+			
+			/////////////////////
+			// Unlock door on correct code
+			if (msPadCode==gsKeypadCode)
+			{
+				// Change to green light
+				SetKeypadMaterial("security_keypad_1","security_keypad_greenlamp");
+				Light_FadeTo("Keypad_PointLight_1",cColor_Green,0.1,0);
+				
+				// Deactivate gui and return player to normal
+				Terminal_SetGuiActive(ImGui_GetName(),false);	
+				Player_ChangeStateToNormal();
+				SwingDoor_SetLocked("exit_waitroom",false,true);
+				Entity_SetActive("DoorHandleTrigger_3", true);
+				SwingDoor_SetLocked("swingdoor_scanroom_corridor_3", false, true);
+				// Sounds
+				Sound_CreateAtEntity("KeypdOpen","Entities_Urban/tech/keypad/keypad_correct","security_keypad_1",0.0,false);
+				Map_AddTimer("UnlockMusic", 1.0f, "UnlockMusic");
+			}
+		}
+
+		//-------------------------------------------------------
+
+		void UnlockMusic (const tString &in asTimer)
+		{
+			Music_Play("00_00_locked", 0.75f, false, eMusicPrio_BigEvent);
+		}
+		
+		bool EnableRealMunshi_NPC(const tString &in asParent, const tString &in asChild, int alState)
+		{
+			Entity_SetActive("special_munshi_monster_1", true);
+			CheckPoint_Setup("");
+			return false;
+		}
+		
+		//-------------------------------------------------------
+
+		void Timer_KeypadEffectsOn(const tString &in asTimer)
+		{
+			Entity_SetEffectsActive(asTimer, true, false);
+			Light_FadeTo("Keypad_PointLight_1",cColor_Red,0.1,0);
+		}
+
+		//-------------------------------------------------------
+		
+		bool PlayerWalkInMunshiRoom(const tString &in asParent, const tString &in asChild, int alState)
+		{
+			Music_Play("05_02_awake", 0.75f, false, eMusicPrio_BigEvent);
+			Player_SetMoveSpeedMul(0.3f);
+			Player_FadeFOVMulTo(0.7f, 0.1f);
+			Player_SetLookSpeedMul(0.6);
+			Player_StartLookAt("SimonOldCopy", 0.8f, 0.8f, 0.8f);
+			Map_AddTimer("Level3_StopLookAtSimon", 4.0f, "StopLookAtSimon");
+			return false;
+		}
+		
+		void StopLookAtSimon(const tString &in asTimer)
+		{
+			Player_SetMoveSpeedMul(1.0f);
+			Player_FadeFOVMulTo(1.0f, 0.3f);
+			Player_StopLookAt(0.4f);
+		}
+		
+		//This might be necessary so it doesn't call again.
+		bool EventPlayerSits(const tString &in asEntity, int alDir)
+		{
+			return false;
+		}
+		
+		//-------------------------------------------------------
+		//ENDING
+		//-------------------------------------------------------
+		
+		int mlid_ScanLines;
+		void PlayerTeleport1(const tString &in asTimer)
+		{
+			Player_SetHealth(1.0f);
+			Player_Teleport("TeleportPlayerTo", true);
+			CameraAnimation_Begin("MunshiIntroAnim", "", false);
+			
+			mlid_ScanLines = Effect_Screen_Start("00_04_scan_noise.mat", cVector2f(0.5, 0.5), cVector2f(2,1),  1, 0.1, 900, 0.1);
+			Effect_ChromaticAberration_StartAnim(4.0f,0.005,0.005,cVector2f_Zero);
+			Effect_ImageTrail_Start(0.08,0.1,4.0,1.0);
+			//Effect_Screen_FadeOut(mlid_ScanLines,0.0);
+			
+			Effect_Rumble_Start(0.9, 0.7, 1.0f);
+			Effect_Shake_Start(0.08,2.75,0,1.1f);
+			Sound_FadeGlobalVolume(1.0f, 0.1f, eSoundEntryType_World);
+			Music_StopAll(0.0f);
+			Music_FadeVolumeMul(1.0f, 0.1f);
+			
+			Effect_VideoDistortion_Start(1.0f,0.25f,0.1f,0.1f,0.0f);
+			Music_Play("01_01_reveal", 0.7f, false, eMusicPrio_BigEvent);
+			
+			Map_AddTimer("AnotherSOMA", 4.0f, "AnotherSOMA");
+			Sound_CreateAtEntity("Screen_Sound_MunshiOffice", "Flashback/Level/01_01/talking_door_noise", "Player", 0, true, 0.5f);
+		}
+		
+		void AnotherSOMA(const tString &in asTimer)
+		{
+			Effect_Rumble_Start(0.9, 1.2f, 0.1f);
+			Effect_Shake_Start(0.1,6.75,1.4f,0.1f);
+			
+			Effect_VideoDistortion_Start(2.0f,1.25f,0.1f,0.1f,0.0f);
+			Map_AddTimer("AnotherSOMA", 6.0f, "AnotherSOMA2");
+			Sound_CreateAtEntity("GoggleAction", "Entities_Special/Equipment/scanner/urban/scan_sequence", "Player", 0, true);
+		}
+		
+		void AnotherSOMA2(const tString &in asTimer)
+		{
+			Effect_VideoDistortion_Start(4.0f,0.2f,0.0f,0.3f,0.0f);
+			Effect_Flash_Start(0.1f, 0.95, 1.25);
+			Effect_Screen_FadeOut(mlid_ScanLines,0.0);
+			cLux_AddDebugMessage("Munshi: Bye Simon... I'll continue my experiments on you!");
+			
+			//Map_ChangeMap("01_01_upsilon_awake.hpm","PlayerStartArea_1", "", "");
+			Player_Teleport("TeleportPlayerTo_2", true);
+			
+			Player_SetClothing("default");
+			Player_SetFootWear("default");
+			Effect_Fade_Out(0);
+			
+			Player_SetAmbientLight_None(true);
+			
+			ParticleSystem_SetVisible("PS_techroom*",false);
+			PlayerEnergy_SetFlowerSwallows(false);
+			Player_SetFlashlightActive(false, true);
+			Player_SetFlashlightDisabled(true);
+			PlayerHands_SetHandModel_Human();
+			CameraAnimation_End();
+			
+			SetupLastPart();
+		}
+		
+		int mlCurrentImageTrailEffectID = 0;
+		int mlDoFEffectID = 0;
+		int mlDOFLightsOn = -1;
+		int mlImageTrailID = -1;
+		bool mbTechRoomSwitchedOn = false;
+		bool mbHelmetPhaseTwoStarted = false;
+
+		void SetupLastPart()
+		{
+			///////////////////////////////////
+			// Set player start!
+			Entity_SetActive("SimonLegs",true);
+			Entity_SetActive("SimonHands",true);
+			Entity_PlayAnimation("SimonHands","chair_00_03_scan",0.0,true);
+			
+			///////////////////
+			// Visual setup
+			Effect_Fade_Out(0);
+			Player_FadeFOVMulTo(0.75f, 0);
+			mlCurrentImageTrailEffectID = Effect_ImageTrail_Start(0.8f, 0, 1500.0f, 15.0f);
+			mlDoFEffectID = Effect_DoF_Start(0.1f, 0.5f, 1, 0);
+			
+			///////////////////
+			// Animation
+			CameraAnimation_Begin("WakeupAnim", "", false);
+					
+			//////////////////////////////////////
+			// Start intro after a short delay
+			Map_AddTimer("", 0.1f, "SequenceIntro");
+			
+			mlImageTrailID = Effect_ImageTrail_Start(0.5f, 0, -1, 15.0f);
+		}
+		
+		cSequenceStatesData mIntroSequenceState;
+		void SequenceIntro(const tString &in asName)
+		{
+			Sequence_Begin("SequenceIntro", mIntroSequenceState);
+
+			if (Sequence_DoStepAndWait(3.0f))
+			{
+				//////////////////////////////////
+				// Wakeup sounds and audio effects
+				Sound_PlayGui("01_01_upsilon_awake/sfx/wake_up/wake_up_event", 1.0f, eSoundEntryType_Gui);
+				
+				//////////////////////////////////
+				// Camera Effects
+				Player_FadeFOVMulTo(1.0f, 0.25f);
+				Effect_Fade_In(1.5f);
+				
+				// visual fx
+				mlDOFLightsOn = Effect_DoF_Start(0.2, 2,1, 0.01);
+				Effect_DoF_FadeFocus(mlDOFLightsOn,0.2,2,0.01);
+				
+				Effect_ImageTrail_Start(2, 0.001, 4, 6);
+			}
+			else if (Sequence_DoStepAndWait(1.5f))
+			{
+				///////////////////////////
+				// Start dialog
+				//Voice_Play("1A_WakeUp");
+				
+				Music_PlayExt("01_01_awakendrone", true, 0.25f, 1.0f, 9.0f, 0.0f, eMusicPrio_MinorEvent, false);
+			}
+			else if (Sequence_DoStepAndWait(2.5f))
+			{
+				/////////////////////////////////
+				// Low pass fade
+				Effect_Fade_Out(2.0f);
+			}
+			else if (Sequence_DoStepAndWait(2.0f))
+			{
+				///////////////////////////////
+				// Switch to the stand up animation
+				CameraAnimation_End();
+				
+				//cSound_FadeLowPassFilter(22000.0f, 0.0f, 12.0f, eSoundEntryType_World);
+				CameraAnimation_Begin("IntroAnim", "", true);
+				CameraAnimationNode_SetInteractiveMovement("IntroAnim_1", false);
+				
+				/////////////////////////////
+				// Fade out DOF effects
+				Effect_DoF_FadeFalloff(mlDoFEffectID, 0, 2.5f);
+					
+				Effect_Fade_In(3.0f);
+			}
+			else if (Sequence_DoStepAndWait(0.5f))
+			{
+				//////////////////////////////////////////
+				// Lift the helmet
+				Sound_FadeGlobalVolume(1.0f, 3.0f, eSoundEntryType_GuiWorld);
+				Sound_FadeGlobalVolume(1.0f, 6.0f, eSoundEntryType_WorldAll);
+				Prop_MoveLinearTo("chair_scan_helmet", "chair_scan_helmet_target_1", 0.35, 1, 0.25, true, "MoveTo_ScanHelmet1");
+				Prop_AlignRotation("chair_scan_helmet","chair_scan_helmet_target_1",0.35,1,0.25,true,"");
+			}
+			else if (Sequence_DoStepAndWait(1.5f))
+			{
+				Effect_DoF_FadeFalloff(mlDoFEffectID, 0, 6.f);
+			//}
+			//else if (Sequence_DoStepAndWait(0.0f))
+			//{
+				//CameraAnimationNode_SetInteractiveMovement("IntroAnim_1", true);
+				Music_Stop(2.0f, eMusicPrio_MinorEvent);
+			}
+			else if (Sequence_DoStepAndWait(5.5f))
+			{
+				if (mbTechRoomSwitchedOn == false)
+				{
+					Entity_SetActive("window_masker",false);
+					Entity_SetActive("ZoomArea_1",true);
+					Entity_SetActive("ZoomArea_2",true);
+					
+					mbTechRoomSwitchedOn = true;
+				}
+				
+				Lamp_SetLit("techroom_emergencylight_*",false,true);
+				PowerOnSequence("");
+			}
+			
+			Sequence_End();
+		}
+
+		cSequenceStatesData mPowerOnSequenceStates;
+		void PowerOnSequence(const tString &in asName)
+		{
+			Sequence_Begin("PowerOnSequence", mPowerOnSequenceStates);
+			
+			if (Sequence_DoStepAndWait(2.0f))
+			{
+				Music_Play("00_06_laboratory", 1.0f, false, eMusicPrio_BigEvent);
+				
+				// Enable Cath Area
+				Entity_SetActive("cath_terminal_1",true);
+				Entity_SetActive("omnislot_inside_left_light_1",true);
+				Entity_SetActive("omnislot_inside_right_light_1",true);
+				
+				cLux_AddTodoMessage("SOUND: This place is turning on...");
+				Sound_CreateAtEntity("PowerOn", "01_01_upsilon_awake/sfx/wake_up/lights_on", "Player", 0, false);
+			}
+			else if (Sequence_DoStepAndWait(2.0f))
+			{
+				// visual fx
+				Effect_DoF_FadeFocus(mlDOFLightsOn, 0.0, 0.1, 0.4);
+				Effect_ToneMapping_FadeWhiteCut(0.1, 0.0001f);
+				
+				Effect_ImageTrail_Start(0.8, 0.001, 4, 6);
+				
+				Entity_SetActive("AMB_StartRoom_Dark", false);
+				Entity_SetActive("AMB_StartRoom_Light", true);
+				
+				Entity_SetActive("window_masker",false);
+				
+				Lamp_SetLit("techroom_lamp_*",true,true);
+				Lamp_SetFlickerActive("techroom_lamp_*",true);
+
+				Player_SetAmbientLight(5.0f,2.5, 5.0f);
+			}
+			else if (Sequence_DoStepAndWait(2.0f))
+			{
+				Lamp_SetLit("Lamp_suit_status_*",true,true);
+				Lamp_SetLit("Lamp_suit_rack_*",true,true);
+				Lamp_SetLit("server_data_*",true,true);
+				
+				///////////////////////////////////////
+				// Tech Terminal boots up
+				Lamp_SetLit("security_panel_lamp",true,true);
+				Lamp_SetLit("ChipLamp_*",true,true);
+				
+				// visual fx
+				Effect_ToneMapping_FadeWhiteCut(0.7, 3);
+			}
+			else if (Sequence_DoStepAndWait(0.5f))
+			{
+				///////////////////////////////////////
+				// Door unlocks
+				Lamp_SetFlickerActive("techroom_lamp_*",false);
+				Button_SetLocked("techroom_doorpanel_*",true,true);
+				Button_SetDisabled("techroom_doorpanel_*",false,true);
+				
+				Sound_CreateAtEntity("DoorFunctional", "Entities_Station/doors/upsilon/horizontal_auto/close_end", "techroom_doorpanel_1", 0.25f, false);
+				Sound_CreateAtEntity("CommRoomPanelUnlock", "Entities_Station/doors/upsilon/upsilon_button/upsilon_button_unlock", "techroom_doorpanel_1");	
+				
+				// visual fx
+				Effect_DoF_FadeFocus(mlDOFLightsOn, 0.2, 30, 8);
+				Effect_DoF_FadeOut(mlDOFLightsOn,7.0f);
+				Effect_ToneMapping_FadeWhiteCut(3.5, 7.0);
+				
+				cLux_AddDebugMessage("Started Credits");
+				PauseMenu_Enabled(false);
+				Credits_Start("config/MunshisCredits.cfg", "OnCreditsComplete",0,0.010f);
+			}
+			else if (Sequence_DoStepAndPause())
+			{
+				// Enable ESC to skip
+				mbEscSkipsCredits = true;
+			}
+			else if(Sequence_DoStepAndWait(0.0f))
+			{
+				cLux_AddDebugMessage("Stopped Credits");
+				Credits_Stop(0.0f);
+				PauseMenu_Enabled(true);
+				Map_ChangeMap("main_menu.hpm","PlayerStartArea_1","","");
+			}
+			
+			Sequence_End();
+		}
+		
+		void OnCreditsComplete()
+		{
+			SequenceStates_Resume("PowerOnSequence");
+			Map_ChangeMap("main_menu.hpm","PlayerStartArea_1","","");
+		}
+		
+		void MoveTo_ScanHelmet1(const tString &in asProp)
+		{
+			if (mbHelmetPhaseTwoStarted) return;
+			
+			
+			Prop_MoveLinearTo("chair_scan_helmet", "chair_scan_helmet_target_2", 1, 1, 0.25, true, "MoveTo_ScanHelmet1");
+			Prop_AlignRotation("chair_scan_helmet","chair_scan_helmet_target_2",0.35,1,0.25,true,"");
+			mbHelmetPhaseTwoStarted = true;
+		}
+		
+		
+		//} PUZZLE 3 end
+    //} Custom Code End
+ 
+}

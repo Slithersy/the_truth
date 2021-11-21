@@ -1,0 +1,117 @@
+#include "interfaces/Map_Interface.hps"
+#include "helpers/helper_imgui.hps"
+#include "helpers/helper_map.hps"
+#include "helpers/helper_game.hps"
+#include "helpers/helper_modules.hps"
+#include "helpers/helper_effects.hps"
+#include "helpers/helper_audio.hps"
+#include "helpers/helper_player.hps"
+#include "inputhandler_types.hps"
+#include "helpers/helper_custom_depth_imgui.hps"
+
+//--------------------------------------------------
+ 
+class cScrMap : iScrMap
+{
+	//--------------------------------------------
+ 
+	//////////////////////////////////////////////////////////////////////////////////////////
+	// ==============
+	// MAIN CALLBACKS
+	// ==============
+	//{///////////////////////////////////////////////////////////////////////////////////////
+ 
+	//-------------------------------------------------------
+ 
+	////////////////////////////
+	// Set up map environment
+	void Setup()
+	{
+	}
+	
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// Run first time starting map
+	void OnStart()
+	{
+		//----DEBUG----//
+		if(cLux_ScriptDebugOn())
+		{
+			//Add any debug stuff here
+		}
+		
+		Effect_ToneMapping_UseSRGB(true);
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// Run when entering map
+	void OnEnter()
+	{	
+		//////////////
+		// Disable pause menu and show main menu instead
+		PauseMenu_Enabled(false);
+		cLux_SetGamePaused(false);
+		MainMenu_Show(true);
+		Music_PlayExt("00_03_apartment_PIANO.ogg", true, 0.35f, 1.0f, 3.0f, 0.0f, eMusicPrio_BigEvent, false);
+		cLux_GetGuiHandler().SetGameHudInputFocus(true);
+		Player_ShowCrossHairIcons(false);
+		Inventory_SetEnabled(false);
+
+		CameraAnimation_Begin("MenuCamera", "", false);
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// Run when leaving map
+	void OnLeave()
+	{
+		Player_ShowCrossHairIcons(true);
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// The player has died.
+	void OnPlayerKilled(int alRecentDeaths, const tString&in asSource)
+	{
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// To get when player makes input (mostly used for debug)
+	void OnAction(int alAction, bool abPressed) 
+	{
+		if(abPressed==false) return;
+		
+		if(alAction == eAction_Test1)
+		{
+			MainMenu_Show(false);
+		}
+	}
+
+	//-------------------------------------------------------
+
+	////////////////////////////
+	// This only used for pure debug purposes when info needs to printed.
+	float DrawDebugOutput(cGuiSet @apSet,iFontData @apFont,float afY)
+	{
+		//afY = cLux_DrawDebugText("My Debug value:"+..., afY);
+		return afY;
+	}
+ 
+	//-------------------------------------------------------
+ 
+ 	void Update(float afTimeStep)
+	{
+		Player_SetActive(false);
+	}
+	
+	//-------------------------------------------------------
+ 
+	//} END MAIN CALLBACKS
+}
